@@ -41,14 +41,13 @@ public class PlayerMovement : MonoBehaviour{
 
     //MovementMethods
 
-     private void Jump(){
+    private void Jump(){
         //jump height is depend jumpPower and gravityScale
          if(Input.GetKey(KeyCode.Space) && isGrounded()){
             body.velocity = new Vector2(body.velocity.x, jumpPower);
             anim.SetTrigger("jump");       
         }
     }
-   
 
     private void Move(){
         body.velocity = new Vector2(horizontalInput * speed, body.velocity.y);
@@ -75,6 +74,9 @@ public class PlayerMovement : MonoBehaviour{
     private bool isOnWall(){
         RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0, new Vector2(transform.localScale.x, 0), 0.1f, wallLayer);
         return raycastHit.collider != null;
+    }
+    public bool canAttack(){
+        return horizontalInput == 0 && isGrounded() && !isOnWall();
     }
    
 
@@ -129,8 +131,6 @@ public class PlayerMovement : MonoBehaviour{
         }
         
     }
-    //State Getters
-    //State Setters
     private void setGrounded(bool param){
         grounded = param;
     }
