@@ -11,7 +11,7 @@ public class Health : MonoBehaviour{
         anim = GetComponent<Animator>();
     }
 
-    public void TakeDemage(float _demage){
+    public void TakeDamage(float _demage){
         currentHealth = Mathf.Clamp(currentHealth - _demage, 0, startingHealth);
         if(currentHealth>0){
             anim.SetTrigger("hurt");
@@ -23,5 +23,8 @@ public class Health : MonoBehaviour{
             }
           
         }
+    }
+    public void AddHelath(float _value){
+        currentHealth = Mathf.Clamp(currentHealth + _value, 0, startingHealth);
     }
 }
