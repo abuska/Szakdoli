@@ -20,8 +20,6 @@ public class PlayerManager : MonoBehaviour
         changePlayerTimer +=Time.deltaTime;
     }
 
-
-
     private void ChangePlayer(){
 
         DeactivatePlayer(activePlayerIndex);

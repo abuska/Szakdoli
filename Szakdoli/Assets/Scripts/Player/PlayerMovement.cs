@@ -11,6 +11,8 @@ public class PlayerMovement : MonoBehaviour{
     
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private LayerMask wallLayer;
+    [SerializeField] private LayerMask ladderLayer;
+
     private Rigidbody2D body;
     private Animator anim;
     private BoxCollider2D boxCollider;
@@ -18,6 +20,7 @@ public class PlayerMovement : MonoBehaviour{
     //private float wallJumpCooldown;
 
     private float horizontalInput;
+    private float verticalInput;
 
 
     private void Awake(){   
@@ -30,11 +33,14 @@ public class PlayerMovement : MonoBehaviour{
     private void Update(){
 
             horizontalInput = Input.GetAxis("Horizontal");
+            verticalInput = Input.GetAxis("Vertical");
             FlipPlayerImage();
 
             if(!(isOnWall() && !isGrounded())){
                 Move();
             }
+            
+            Climb();
             Jump(); 
             
             //Set animator
@@ -57,6 +63,17 @@ public class PlayerMovement : MonoBehaviour{
         body.velocity = new Vector2(horizontalInput * speed, body.velocity.y);
     }
 
+    private void Climb(){
+        if(canClimb()){
+            body.gravityScale = 0;
+            if(Mathf.Abs(verticalInput) > 0){
+                body.velocity = new Vector2(body.velocity.x, verticalInput * speed);
+            } 
+        }else{
+            body.gravityScale = gravityScale;
+        }
+        
+    }
     private void FlipPlayerImage(){
         //Flip image according player move
         if(horizontalInput > 0.01f){
@@ -70,18 +87,25 @@ public class PlayerMovement : MonoBehaviour{
     private bool isWalk(){
         return horizontalInput !=0;
     }
-
     private bool isGrounded(){
         RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0, Vector2.down, 0.1f, groundLayer);
         return raycastHit.collider != null;
     }
+
+    private bool canClimb(){
+        RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0, Vector2.down, 0.1f, ladderLayer);
+        return raycastHit.collider != null;
+    }
+
     private bool isOnWall(){
         RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0, new Vector2(transform.localScale.x, 0), 0.1f, wallLayer);
         return raycastHit.collider != null;
     }
+
     public bool canAttack(){
         return horizontalInput == 0 && isGrounded() && !isOnWall() && playerName=="Baleog";
     }
+
     public bool canJump(){
         return isGrounded() && playerName=="Erik";
     }
