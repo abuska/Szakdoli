@@ -31,7 +31,7 @@ public class PlayerManager : MonoBehaviour
         }else{
            activePlayerIndex = 0;
         }
-        
+
         ActivatePlayer(activePlayerIndex);
 
         changePlayerTimer = 0;
@@ -52,11 +52,5 @@ public class PlayerManager : MonoBehaviour
     public GameObject getActivePlayer(){
         return players[activePlayerIndex];
     }
-    
-    /*
-    public Health getPlayerHealth(){
-        Debug.Log(players[activePlayerIndex].GetComponent<Health>());
-        return players[activePlayerIndex].GetComponent<Health>();
-    }*/
 
 }

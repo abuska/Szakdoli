@@ -7,7 +7,7 @@ public class PlayerMovement : MonoBehaviour{
     [SerializeField] private float speed;
     [SerializeField] private float jumpPower;
     [SerializeField] private float gravityScale;
-    
+    [SerializeField] private string playerName;
     
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private LayerMask wallLayer;
@@ -47,7 +47,7 @@ public class PlayerMovement : MonoBehaviour{
 
     private void Jump(){
         //jump height is depend jumpPower and gravityScale
-         if(Input.GetKey(KeyCode.Space) && isGrounded()){
+         if(Input.GetKey(KeyCode.Space) && canJump()){
             body.velocity = new Vector2(body.velocity.x, jumpPower);
             anim.SetTrigger("jump");       
         }
@@ -80,7 +80,10 @@ public class PlayerMovement : MonoBehaviour{
         return raycastHit.collider != null;
     }
     public bool canAttack(){
-        return horizontalInput == 0 && isGrounded() && !isOnWall();
+        return horizontalInput == 0 && isGrounded() && !isOnWall() && playerName=="Baleog";
+    }
+    public bool canJump(){
+        return isGrounded() && playerName=="Erik";
     }
    
 
