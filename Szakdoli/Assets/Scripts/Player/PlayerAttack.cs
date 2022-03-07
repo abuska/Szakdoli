@@ -14,13 +14,11 @@ public class PlayerAttack : MonoBehaviour{
         playerMovement = GetComponent<PlayerMovement>();
         
     }
-    void Update()
-    {
+    void Update(){
         if(Input.GetMouseButton(0) && coolDownTimer > attackCooldown && playerMovement.canAttack()){
             Attack();
         }
         coolDownTimer += Time.deltaTime;
-        
     }
 
     private void Attack(){

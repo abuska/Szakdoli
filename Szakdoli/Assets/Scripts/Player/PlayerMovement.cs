@@ -7,18 +7,20 @@ public class PlayerMovement : MonoBehaviour{
     [SerializeField] private float speed;
     [SerializeField] private float jumpPower;
     [SerializeField] private float gravityScale;
+    
+    
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private LayerMask wallLayer;
     private Rigidbody2D body;
     private Animator anim;
     private BoxCollider2D boxCollider;
+
     //private float wallJumpCooldown;
 
     private float horizontalInput;
 
 
-    private void Awake()
-    {   
+    private void Awake(){   
         body = GetComponent<Rigidbody2D>();
         body.gravityScale = gravityScale;
         anim = GetComponent<Animator>();
@@ -26,19 +28,21 @@ public class PlayerMovement : MonoBehaviour{
     }
 
     private void Update(){
-        horizontalInput = Input.GetAxis("Horizontal");
-        FlipPlayerImage();
 
-        if(!(isOnWall() && !isGrounded())){
-            Move();
-        }
-        Jump(); 
+            horizontalInput = Input.GetAxis("Horizontal");
+            FlipPlayerImage();
+
+            if(!(isOnWall() && !isGrounded())){
+                Move();
+            }
+            Jump(); 
+            
+            //Set animator
+            anim.SetBool("walk", isWalk());
+            anim.SetBool("grounded", isGrounded());
         
-        //Set animator
-        anim.SetBool("walk", isWalk());
-        anim.SetBool("grounded", isGrounded());
     }
-
+    
     //MovementMethods
 
     private void Jump(){
