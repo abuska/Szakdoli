@@ -8,6 +8,8 @@ public class PlayerManager : MonoBehaviour
     private int activePlayerIndex = 0;
     private float changePlayerTimer = Mathf.Infinity;
 
+    private bool allPlayerDead = false;
+
     private void Awake(){
         ActivatePlayer(0);
     }
@@ -21,18 +23,31 @@ public class PlayerManager : MonoBehaviour
     }
 
     private void ChangePlayer(){
+         
 
         DeactivatePlayer(activePlayerIndex);
-
-        if( activePlayerIndex < players.Length - 1 ){
-            activePlayerIndex +=1 ;
-        }else{
-           activePlayerIndex = 0;
-        }
-
-        ActivatePlayer(activePlayerIndex);
-
+        FindAvailablePlayer();
         changePlayerTimer = 0;
+    }
+    private void FindAvailablePlayer(){
+        int playerCounter = players.Length;
+        int nextPlayerIndex = activePlayerIndex;
+
+        for(int i = 0 ; i < playerCounter; i++){
+            if( nextPlayerIndex < players.Length - 1 ){
+                nextPlayerIndex +=1 ;
+                
+            }else{
+                nextPlayerIndex = 0;
+            }
+
+            if(!players[nextPlayerIndex].GetComponent<Health>().dead){
+                    activePlayerIndex = nextPlayerIndex;
+                    ActivatePlayer(activePlayerIndex);
+                    return;
+            }
+        }
+        allPlayerDead = true;
     }
 
     private void DeactivatePlayer(int index){
