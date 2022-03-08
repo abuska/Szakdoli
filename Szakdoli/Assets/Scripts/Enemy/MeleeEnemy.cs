@@ -14,9 +14,12 @@ public class MeleeEnemy : MonoBehaviour
     private Animator anim;
     private Health playerHealth;
 
+    private EnemyPatrol enemyPatrol;
+
     private void Awake()
     {
         anim = GetComponent<Animator>();
+        enemyPatrol = GetComponentInParent<EnemyPatrol>();
     }
 
     private void Update(){
@@ -28,6 +31,9 @@ public class MeleeEnemy : MonoBehaviour
                 anim.SetTrigger("attack");
             }
         }
+        if(enemyPatrol != null){
+            enemyPatrol.enabled = !PlayerInSight();
+        }
        
         
     }
@@ -38,7 +44,7 @@ public class MeleeEnemy : MonoBehaviour
             playerHealth = raycastHit.transform.GetComponent<Health>();
         }
         
-        return raycastHit.collider != null;
+        return raycastHit.collider != null && playerHealth.currentHealth>0;
     }
     //Change boxCollider red in unity 
     private void OnDrawGizmos(){
