@@ -12,7 +12,6 @@ public class PlayerMovement : MonoBehaviour{
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private LayerMask wallLayer;
     [SerializeField] private LayerMask ladderLayer;
-    
 
     private Rigidbody2D body;
     private Animator anim;
@@ -90,14 +89,13 @@ public class PlayerMovement : MonoBehaviour{
     }
     private bool isGrounded(){
         RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0, Vector2.down, 0.1f, groundLayer);
-        //RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0, Vector2.down, 0.1f, groundLayer);
-        Debug.Log(raycastHit.collider != null);
         return raycastHit.collider != null;
     }
 
     private bool canClimb(){
         RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0, Vector2.down, 0.1f, ladderLayer);
         return raycastHit.collider != null;
+
     }
 
     private bool isOnWall(){
