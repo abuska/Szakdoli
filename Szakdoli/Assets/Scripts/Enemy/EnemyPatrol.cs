@@ -32,7 +32,6 @@ public class EnemyPatrol : MonoBehaviour
     }
 
     private void Update(){
-        Debug.Log(moveLeft);
         if(moveLeft){
             if(enemy.position.x >=leftEdge.position.x){
                 MoveInDirection(-1);

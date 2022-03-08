@@ -8,7 +8,7 @@ public class PlayerManager : MonoBehaviour
     private int activePlayerIndex = 0;
     private float changePlayerTimer = Mathf.Infinity;
 
-    private bool allPlayerDead = false;
+    //private bool allPlayerDead = false;
 
     private void Awake(){
         ActivatePlayer(0);
@@ -47,7 +47,7 @@ public class PlayerManager : MonoBehaviour
                     return;
             }
         }
-        allPlayerDead = true;
+        //allPlayerDead = true;
     }
 
     private void DeactivatePlayer(int index){
