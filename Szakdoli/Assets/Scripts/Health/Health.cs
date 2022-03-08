@@ -28,15 +28,15 @@ public class Health : MonoBehaviour{
             if(!dead){
                 anim.SetTrigger("die");
 
-                if(GetComponent<PlayerMovement>().enabled != null){
+                if(GetComponent<PlayerMovement>() != null){
                     GetComponent<PlayerMovement>().enabled = false;
                 }
 
-                if(GetComponent<EnemyPatrol>().enabled != null){
-                    GetComponent<EnemyPatrol>().enabled = false;
+                if(GetComponentInParent<EnemyPatrol>() != null){
+                    GetComponentInParent<EnemyPatrol>().enabled = false;
                 }
 
-                if(GetComponent<MeleeEnemy>().enabled != null){
+                if(GetComponent<MeleeEnemy>() != null){
                     GetComponent<MeleeEnemy>().enabled = false;
                 }
 
