@@ -7,6 +7,7 @@ TagManager:
   - Ground
   - Enemy
   - Ladder
+  - Door
   layers:
   - Default
   - TransparentFX
@@ -21,7 +22,7 @@ TagManager:
   - Player
   - Enemy
   - Ladder
-  - 
+  - Door
   - 
   - 
   - 
