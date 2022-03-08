@@ -16,7 +16,7 @@ public class PlayerManager : MonoBehaviour
 
     void Update(){
 
-        if(Input.GetKey(KeyCode.LeftShift) && changePlayerTimer > 0.5){
+        if(Input.GetKey(KeyCode.LeftControl) && changePlayerTimer > 0.5){
             ChangePlayer();
         }
         changePlayerTimer +=Time.deltaTime;
