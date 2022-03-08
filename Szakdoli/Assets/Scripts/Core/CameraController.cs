@@ -30,15 +30,13 @@ public class CameraController : MonoBehaviour{
     private void FollowPlayerCamera(){
         player = playerManager.getActivePlayerTransform();
 
-        Debug.Log(transform.position.y);
-        Debug.Log(player.position.y);
-
         transform.position = new Vector3(player.position.x + lookAhead, player.position.y+3, transform.position.z);
 
         lookAhead = Mathf.Lerp(lookAhead, (aheadDistance*player.localScale.x), Time.deltaTime * cameraSpeed );
 
     }
 
+    /*
     public float getVerticalCameraDistance(){
         if(Mathf.Abs(player.position.y - transform.position.y ) < 3){
             return player.position.y - transform.position.y;
@@ -46,5 +44,6 @@ public class CameraController : MonoBehaviour{
            return 3;
         }
     }
+    */
 }
 
