@@ -1,18 +1,22 @@
 using UnityEngine;
 
+ //Ez az osztály felelős a kamera mozgásért
+ 
 public class CameraController : MonoBehaviour{
-    //Room camera
-    [SerializeField] private float speed;
+
+    //Szoba kamera nézethez
+    [SerializeField] private float speed;  
     private float currentPosX;
     private Vector3 velocity = Vector3.zero;
-    //Follow player
+    //Játékos követése
     private Transform player;
     [SerializeField] private PlayerManager playerManager;
-    //Follow player with distance
+    //Játékos követése távolsággal, megkönnyíti a játékos számára, a pálya áttekintését
     [SerializeField] private float aheadDistance;
     [SerializeField] private float cameraSpeed;
 
     private float lookAhead;
+    //Todo: player létra használata közben is legyen egy kis vertikális követési távolság, a jobb játékélmény miatt
     private float lookVerticalAhead;
 
     private void Update(){
@@ -36,14 +40,5 @@ public class CameraController : MonoBehaviour{
 
     }
 
-    /*
-    public float getVerticalCameraDistance(){
-        if(Mathf.Abs(player.position.y - transform.position.y ) < 3){
-            return player.position.y - transform.position.y;
-        }else{  
-           return 3;
-        }
-    }
-    */
 }
 

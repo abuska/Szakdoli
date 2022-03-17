@@ -2,13 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Több komment!
+//Pálya választásnál óvaosan.
+
+//1500-2000sor kód.
+
 public class PlayerManager : MonoBehaviour
 {
     [SerializeField] private GameObject[] players = {};
     private int activePlayerIndex = 0;
     private float changePlayerTimer = Mathf.Infinity;
 
-    //private bool allPlayerDead = false;
+    private bool allPlayerDead = false;
 
     private void Awake(){
         ActivatePlayer(0);
@@ -30,24 +35,27 @@ public class PlayerManager : MonoBehaviour
         changePlayerTimer = 0;
     }
     private void FindAvailablePlayer(){
-        int playerCounter = players.Length;
-        int nextPlayerIndex = activePlayerIndex;
+        if(!allPlayerDead){
+            int playerCounter = players.Length;
+            int nextPlayerIndex = activePlayerIndex;
 
-        for(int i = 0 ; i < playerCounter; i++){
-            if( nextPlayerIndex < players.Length - 1 ){
-                nextPlayerIndex +=1 ;
-                
-            }else{
-                nextPlayerIndex = 0;
-            }
+            for(int i = 0 ; i < playerCounter; i++){
+                if( nextPlayerIndex < players.Length - 1 ){
+                    nextPlayerIndex +=1 ;
+                    
+                }else{
+                    nextPlayerIndex = 0;
+                }
 
-            if(!players[nextPlayerIndex].GetComponent<Health>().dead){
-                    activePlayerIndex = nextPlayerIndex;
-                    ActivatePlayer(activePlayerIndex);
-                    return;
+                if(!players[nextPlayerIndex].GetComponent<Health>().dead){
+                        activePlayerIndex = nextPlayerIndex;
+                        ActivatePlayer(activePlayerIndex);
+                        return;
+                }
             }
+            allPlayerDead = true;
         }
-        //allPlayerDead = true;
+       
     }
 
     private void DeactivatePlayer(int index){
