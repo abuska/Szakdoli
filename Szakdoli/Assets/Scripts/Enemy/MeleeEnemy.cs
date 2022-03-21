@@ -45,7 +45,6 @@ public class MeleeEnemy : MonoBehaviour
 
     private void Update(){
         coolDownTimer += Time.deltaTime;
-
         if(PlayerInSight()){
             if(coolDownTimer >= attackCooldown){
                 //Timer beállítása, és a támadás animáció indítása.
@@ -75,7 +74,7 @@ public class MeleeEnemy : MonoBehaviour
             playerHealth = raycastHit.transform.GetComponent<Health>();
         }
         //Akkor tér vissza igazzal, ha van a közelben player, és az adott player nem halott.
-        return raycastHit.collider != null && !playerHealth.dead;
+        return raycastHit.collider != null && playerHealth.currentHealth>0;
     }
 
 
