@@ -17,12 +17,21 @@ public class PlayerAttack : MonoBehaviour{
     void Update(){
         if(Input.GetMouseButton(0) && coolDownTimer > attackCooldown && playerMovement.canAttack()){
             Attack();
+        }else if(Input.GetMouseButton(1) && coolDownTimer > attackCooldown && playerMovement.canAttack()){
+            Fire();
         }
         coolDownTimer += Time.deltaTime;
     }
 
     private void Attack(){
-        anim.SetTrigger("attack");
+       if(coolDownTimer >= attackCooldown){
+                //Timer beállítása, és a támadás animáció indítása.
+                coolDownTimer = 0;
+                anim.SetTrigger("attack");
+            }
+    }
+    private void Fire(){
+        anim.SetTrigger("fire");
         coolDownTimer = 0;
 
         fireballs[FindFireball()].transform.position = firePoint.position;

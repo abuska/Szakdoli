@@ -28,12 +28,11 @@ public class PlayerManager : MonoBehaviour
     }
 
     private void ChangePlayer(){
-         
-
         DeactivatePlayer(activePlayerIndex);
         FindAvailablePlayer();
         changePlayerTimer = 0;
     }
+
     private void FindAvailablePlayer(){
         if(!allPlayerDead){
             int playerCounter = players.Length;
