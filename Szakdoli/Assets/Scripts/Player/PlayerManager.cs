@@ -95,5 +95,11 @@ public class PlayerManager : MonoBehaviour
     public GameObject getActivePlayer(){
         return players[activePlayerIndex];
     }
+    public int getPlayerNumber(){
+        return players.Length;
+    }
+    public GameObject getPlayerByIndex(int index){
+        return players[index];
+    }
 
 }
