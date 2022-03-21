@@ -104,7 +104,7 @@ public class PlayerMovement : MonoBehaviour{
     }
 
     public bool canAttack(){
-        return horizontalInput == 0 && isGrounded() && !isOnWall() && playerName=="Baleog";
+        return isGrounded() && !isOnWall() && playerName=="Baleog";
     }
 
     public bool canJump(){

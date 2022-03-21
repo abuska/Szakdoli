@@ -3,8 +3,17 @@ using UnityEngine;
 public class PlayerAttack : MonoBehaviour{
   
     [SerializeField] private float attackCooldown;
+    [SerializeField] private LayerMask enemyLayer;
+
+    [Header ("Melee Parameters")]
+    [SerializeField] private int damage;
+    [SerializeField] private BoxCollider2D boxCollider;
+
+    [Header ("Fire Parameters")]
     [SerializeField] private Transform firePoint;
     [SerializeField] private GameObject[] fireballs;
+
+
     private Animator anim;
     private PlayerMovement playerMovement;
     private float coolDownTimer = Mathf.Infinity;
@@ -28,8 +37,19 @@ public class PlayerAttack : MonoBehaviour{
                 //Timer beállítása, és a támadás animáció indítása.
                 coolDownTimer = 0;
                 anim.SetTrigger("attack");
+
             }
     }
+    private void TakeEnemyDamage(){
+        RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center + transform.right * transform.localScale.x,
+        new Vector3(boxCollider.bounds.size.x, boxCollider.bounds.size.y, boxCollider.bounds.size.z), 0, Vector2.left, 0, enemyLayer);
+        
+        if(raycastHit.collider != null && raycastHit.collider.GetComponent<Health>() != null && raycastHit.collider.tag != "Player"){
+            raycastHit.collider.GetComponent<Health>().TakeDamage(damage);
+        }
+    }
+
+
     private void Fire(){
         anim.SetTrigger("fire");
         coolDownTimer = 0;
