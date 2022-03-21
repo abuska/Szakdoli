@@ -66,6 +66,7 @@ public class PlayerMovement : MonoBehaviour{
     private void Climb(){
         if(canClimb()){
             body.gravityScale = 0;
+            body.velocity = new Vector2(body.velocity.x, 0);
             if(Mathf.Abs(verticalInput) > 0){
                 body.velocity = new Vector2(body.velocity.x, verticalInput * speed);
             } 
