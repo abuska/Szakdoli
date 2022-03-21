@@ -54,6 +54,9 @@ public class Health : MonoBehaviour{
                 if(GetComponent<PlayerMovement>() != null){
                     GetComponent<PlayerMovement>().enabled = false;
                     gameObject.SetActive(false);
+                    if(GetComponentInParent<PlayerManager>().getActivePlayer() == gameObject){
+                        GetComponentInParent<PlayerManager>().ChangePlayer();
+                    }    
                 }
                 //Ha a karakter járőr
                 if(GetComponentInParent<EnemyPatrol>() != null){

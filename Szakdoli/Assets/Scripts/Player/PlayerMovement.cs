@@ -110,7 +110,7 @@ public class PlayerMovement : MonoBehaviour{
     public bool canJump(){
         return isGrounded() && playerName=="Erik";
     }
-   
+    
 
 
 /////////////////////////////////////////////////////////////////////////////

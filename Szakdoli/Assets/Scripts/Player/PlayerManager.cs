@@ -9,11 +9,10 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
+    [SerializeField] private GameManager gameManager;
     [SerializeField] private GameObject[] players = {};
     private int activePlayerIndex = 0;
     private float changePlayerTimer = Mathf.Infinity;
-
-    private bool allPlayerDead = false;
 
     private void Awake(){
         ActivatePlayer(0);
@@ -21,20 +20,44 @@ public class PlayerManager : MonoBehaviour
 
     void Update(){
 
-        if(Input.GetKey(KeyCode.LeftControl) && changePlayerTimer > 0.5){
-            ChangePlayer();
-        }
-        changePlayerTimer +=Time.deltaTime;
+        if(isGameOver()){
+            gameManager.GameOver();
+        }else{
+            if(Input.GetKey(KeyCode.LeftControl) && changePlayerTimer > 0.5){
+                ChangePlayer();
+            }
+            changePlayerTimer +=Time.deltaTime;
+        }  
+        
     }
 
-    private void ChangePlayer(){
+
+    public void ChangePlayer(){
         DeactivatePlayer(activePlayerIndex);
         FindAvailablePlayer();
         changePlayerTimer = 0;
     }
+    private bool isGameOver(){
+        
+        int playerCounter = players.Length;
+        int deadPlayerCounter = 0;
+          for(int i = 0 ; i < playerCounter; i++){
+                if(players[i].GetComponent<Health>().dead){
+                    deadPlayerCounter+=1;
+                }
+        }
+        return playerCounter == deadPlayerCounter;
+    }
 
+    public void ChangeDeadPlayer(){
+        if(true){
+            DeactivatePlayer(activePlayerIndex);
+            FindAvailablePlayer();
+            changePlayerTimer = 0;
+        }
+    }
     private void FindAvailablePlayer(){
-        if(!allPlayerDead){
+
             int playerCounter = players.Length;
             int nextPlayerIndex = activePlayerIndex;
 
@@ -52,8 +75,7 @@ public class PlayerManager : MonoBehaviour
                         return;
                 }
             }
-            allPlayerDead = true;
-        }
+        
        
     }
 
@@ -69,6 +91,7 @@ public class PlayerManager : MonoBehaviour
     public Transform getActivePlayerTransform(){
         return players[activePlayerIndex].transform;
     }
+
     public GameObject getActivePlayer(){
         return players[activePlayerIndex];
     }
