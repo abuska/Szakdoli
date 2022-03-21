@@ -46,7 +46,8 @@ public class PlayerMovement : MonoBehaviour{
             //Set animator
             anim.SetBool("walk", isWalk());
             anim.SetBool("grounded", isGrounded());
-        
+            Physics2D.IgnoreLayerCollision(10,10);
+            Physics2D.IgnoreLayerCollision(10,0);
     }
     
     //MovementMethods
