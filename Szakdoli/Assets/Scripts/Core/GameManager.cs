@@ -9,9 +9,15 @@ public class GameManager : MonoBehaviour
     bool gameHasEnded = false;
     public float restartDelay = 1f;
 
-    
 
-  
+
+    private void Update()
+    {
+         //TODO game menü
+            if(Input.GetKey(KeyCode.Escape)){
+                SceneManager.LoadScene(0);
+            }
+    }
 
     public void Restart (){
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
