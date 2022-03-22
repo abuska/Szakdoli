@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class LazerTrap : MonoBehaviour
 {
+    //TODO HEADEREK
     [SerializeField] private GameObject button;
     [SerializeField] private GameObject[] traps;
     [SerializeField] private Rigidbody2D body;
@@ -14,27 +15,25 @@ public class LazerTrap : MonoBehaviour
     private bool isButtonTurnOff = false;
    
     private void Update(){
-        if(isButtonTurnOff){
-            Debug.Log("Button Turn Off");
-            
-        }else{
-            Button();
+        if(!isButtonTurnOff){
+             Button();
             if(coolDownTimer >= attackCooldown){
                 DamagePlayer();    
                 coolDownTimer = 0;
             }
-        }
-        coolDownTimer += Time.deltaTime;
+            coolDownTimer += Time.deltaTime;
+        }     
     }
 
     private void TurnOffTraps(){
         for(int i = 0; i <= traps.Length-1 ; i++ ){
+            //Turn off animáció
             traps[i].GetComponent<Animator>().SetBool("turnOff",true);
-            //gameObject.GetComponent<Collider2D>().enabled = false;
-            /*BoxCollider[] myColliders = traps[i].GetComponent<Collider2D>();
-            foreach(BoxCollider bc in myColliders){
+            //Az összes collidert kikapcsolja
+            BoxCollider2D[] colliders = traps[i].GetComponents<BoxCollider2D>();
+            foreach(BoxCollider2D bc in colliders){
                 bc.enabled = false;
-            } */
+            }
         }
         isButtonTurnOff = true;
     }
@@ -51,7 +50,7 @@ public class LazerTrap : MonoBehaviour
     private void DamagePlayer(){
         for(int i = 0; i <= traps.Length-1 ; i++ ){
             RaycastHit2D raycastHit = Physics2D.BoxCast(traps[i].GetComponent<BoxCollider2D>().bounds.center, traps[i].GetComponent<BoxCollider2D>().bounds.size, 0, Vector2.down, 0.5f, playerLayer);
-                if(raycastHit.collider != null){
+                if(raycastHit.collider != null && raycastHit.transform.GetComponent<Health>()!=null){
                     raycastHit.transform.GetComponent<Health>().TakeDamage(damage);
                 }
                 

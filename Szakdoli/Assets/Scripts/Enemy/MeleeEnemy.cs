@@ -74,7 +74,7 @@ public class MeleeEnemy : MonoBehaviour
             playerHealth = raycastHit.transform.GetComponent<Health>();
         }
         //Akkor tér vissza igazzal, ha van a közelben player, és az adott player nem halott.
-        return raycastHit.collider != null && playerHealth.currentHealth>0;
+        return raycastHit.collider != null && playerHealth!=null && playerHealth.currentHealth!=null && playerHealth.currentHealth>0;
     }
 
 
