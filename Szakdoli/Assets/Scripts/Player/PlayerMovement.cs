@@ -6,7 +6,6 @@ public class PlayerMovement : MonoBehaviour{
 
     [SerializeField] private float speed;
     [SerializeField] private float jumpPower;
-    [SerializeField] private float gravityScale;
     [SerializeField] private string playerName;
     
     [SerializeField] private LayerMask groundLayer;
@@ -17,6 +16,7 @@ public class PlayerMovement : MonoBehaviour{
     private Animator anim;
     private BoxCollider2D boxCollider;
 
+    public float gravityScale{get; private set; }
     //private float wallJumpCooldown;
 
     private float horizontalInput;
@@ -111,6 +111,10 @@ public class PlayerMovement : MonoBehaviour{
         return isGrounded() && playerName=="Erik";
     }
     
+    public void setGravityScale(int value){
+        gravityScale = value;
+        body.gravityScale = gravityScale;
+    }
 
 
 /////////////////////////////////////////////////////////////////////////////
