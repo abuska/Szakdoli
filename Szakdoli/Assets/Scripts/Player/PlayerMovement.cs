@@ -25,7 +25,7 @@ public class PlayerMovement : MonoBehaviour{
 
     private void Awake(){   
         body = GetComponent<Rigidbody2D>();
-        body.gravityScale = gravityScale;
+        gravityScale = body.gravityScale;
         anim = GetComponent<Animator>();
         boxCollider = GetComponent<BoxCollider2D>();
     }
@@ -111,7 +111,7 @@ public class PlayerMovement : MonoBehaviour{
         return isGrounded() && playerName=="Erik";
     }
     
-    public void setGravityScale(int value){
+    public void setGravityScale(float value){
         gravityScale = value;
         body.gravityScale = gravityScale;
     }
