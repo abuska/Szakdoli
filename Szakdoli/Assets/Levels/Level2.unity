@@ -5826,7 +5826,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3222719524359332756, guid: 3771718621a87c741a9d3d99887b2149, type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 3222719524359332759, guid: 3771718621a87c741a9d3d99887b2149, type: 3}
       propertyPath: m_LocalScale.y
@@ -5916,6 +5916,14 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -4.07
       objectReference: {fileID: 0}
+    - target: {fileID: 5896979469030888295, guid: 3771718621a87c741a9d3d99887b2149, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5896979469030888295, guid: 3771718621a87c741a9d3d99887b2149, type: 3}
+      propertyPath: m_AutoTiling
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6632198734668185413, guid: 3771718621a87c741a9d3d99887b2149, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.12
@@ -5954,6 +5962,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6632198734881936043, guid: 3771718621a87c741a9d3d99887b2149, type: 3}
       propertyPath: boxCollider
+      value: 
+      objectReference: {fileID: 67892108}
+    - target: {fileID: 6632198734881936043, guid: 3771718621a87c741a9d3d99887b2149, type: 3}
+      propertyPath: swordCollider
       value: 
       objectReference: {fileID: 67892108}
     - target: {fileID: 6632198734881936043, guid: 3771718621a87c741a9d3d99887b2149, type: 3}

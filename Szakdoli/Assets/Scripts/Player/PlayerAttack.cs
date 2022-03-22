@@ -24,11 +24,8 @@ public class PlayerAttack : MonoBehaviour{
         
     }
     void Update(){
-        
         if(Input.GetMouseButton(0) && coolDownTimer > attackCooldown && playerMovement.canAttack()){
-            
             Attack();
-            
         }else if(Input.GetMouseButton(1) && coolDownTimer > attackCooldown && playerMovement.canAttack()){
             Fire();
         }
