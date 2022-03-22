@@ -821,6 +821,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1123627275709510526}
     m_Modifications:
+    - target: {fileID: 6505603495447367034, guid: 91bd0313211dd3649b6053a853663529, type: 3}
+      propertyPath: m_SortingLayer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6505603495447367034, guid: 91bd0313211dd3649b6053a853663529, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 352520071
+      objectReference: {fileID: 0}
     - target: {fileID: 6505603495447367037, guid: 91bd0313211dd3649b6053a853663529, type: 3}
       propertyPath: m_Name
       value: Arrow

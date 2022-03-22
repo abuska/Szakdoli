@@ -7,7 +7,7 @@ public class PlayerAttack : MonoBehaviour{
 
     [Header ("Melee Parameters")]
     [SerializeField] private int damage;
-    [SerializeField] private BoxCollider2D boxCollider;
+    [SerializeField] private BoxCollider2D swordCollider;
 
     [Header ("Fire Parameters")]
     [SerializeField] private Transform firePoint;
@@ -24,8 +24,11 @@ public class PlayerAttack : MonoBehaviour{
         
     }
     void Update(){
+        
         if(Input.GetMouseButton(0) && coolDownTimer > attackCooldown && playerMovement.canAttack()){
+            
             Attack();
+            
         }else if(Input.GetMouseButton(1) && coolDownTimer > attackCooldown && playerMovement.canAttack()){
             Fire();
         }
@@ -37,16 +40,17 @@ public class PlayerAttack : MonoBehaviour{
                 //Timer beállítása, és a támadás animáció indítása.
                 coolDownTimer = 0;
                 anim.SetTrigger("attack");
-
             }
     }
     private void TakeEnemyDamage(){
-        RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center + transform.right * transform.localScale.x,
-        new Vector3(boxCollider.bounds.size.x, boxCollider.bounds.size.y, boxCollider.bounds.size.z), 0, Vector2.left, 0, enemyLayer);
+        swordCollider.GetComponent<Collider2D>().enabled = true;
+        RaycastHit2D raycastHit = Physics2D.BoxCast(swordCollider.bounds.center + transform.right * transform.localScale.x,
+        new Vector3(swordCollider.bounds.size.x, swordCollider.bounds.size.y, swordCollider.bounds.size.z), 0, Vector2.left, 0, enemyLayer);
         
         if(raycastHit.collider != null && raycastHit.collider.GetComponent<Health>() != null && raycastHit.collider.tag != "Player"){
             raycastHit.collider.GetComponent<Health>().TakeDamage(damage);
         }
+        swordCollider.GetComponent<Collider2D>().enabled = false;
     }
 
 
