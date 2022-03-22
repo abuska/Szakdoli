@@ -699,6 +699,7 @@ GameObject:
   - component: {fileID: 317394213}
   - component: {fileID: 317394212}
   - component: {fileID: 317394211}
+  - component: {fileID: 317394214}
   m_Layer: 0
   m_Name: Button
   m_TagString: Untagged
@@ -797,6 +798,25 @@ Transform:
   m_Father: {fileID: 359601625}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &317394214
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 317394210}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 10c9e2869f16eb245ae8837906a96186, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &352506274
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -863,7 +883,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 359601625}
-  - component: {fileID: 359601624}
   - component: {fileID: 359601623}
   - component: {fileID: 359601626}
   m_Layer: 0
@@ -885,34 +904,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 814a7de61542dc94d9b3d8d05aba15cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonCollider: {fileID: 317394211}
-  trapsCollider:
-  - {fileID: 969012094}
+  button: {fileID: 317394210}
+  traps:
+  - {fileID: 969012090}
   body: {fileID: 359601626}
   playerLayer:
     serializedVersion: 2
     m_Bits: 1024
   damage: 1
-  attackCooldown: 0
---- !u!95 &359601624
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 359601622}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  attackCooldown: 2
 --- !u!4 &359601625
 Transform:
   m_ObjectHideFlags: 0
@@ -2653,6 +2653,8 @@ GameObject:
   m_Component:
   - component: {fileID: 969012093}
   - component: {fileID: 969012092}
+  - component: {fileID: 969012091}
+  - component: {fileID: 969012095}
   - component: {fileID: 969012094}
   m_Layer: 11
   m_Name: LazerTrap
@@ -2661,6 +2663,25 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!95 &969012091
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 969012090}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3a0c523109f38ad47a9a5a8d27f33147, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!212 &969012092
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2727,6 +2748,32 @@ Transform:
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &969012094
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 969012090}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.0077495575, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.55, y: 3.06}
+    newSize: {x: 0.55, y: 3.06}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.8445034, y: 3.06}
+  m_EdgeRadius: 0
+--- !u!61 &969012095
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

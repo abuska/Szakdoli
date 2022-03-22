@@ -29,6 +29,7 @@ public class Projectile : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D collision){
+        //TODO tényleg kell a Ladderes rész?
         if(collision.tag != "Ladder"){
             hit = true;
             boxCollider.enabled = false;
