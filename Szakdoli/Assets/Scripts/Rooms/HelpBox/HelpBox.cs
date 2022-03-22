@@ -5,14 +5,26 @@ using UnityEngine;
 public class HelpBox : MonoBehaviour
 {
     [SerializeField] private GameObject infoText;
+    [SerializeField] private bool showInfoInTrigger;
+    private bool isPlayerInCollider;
+
+    private void Update(){
+        if(isPlayerInCollider){
+            if(showInfoInTrigger || Input.GetKey(KeyCode.E)){
+                infoText.SetActive(true);
+            }
+        }else{
+            infoText.SetActive(false);
+        }
+    }
     private void OnTriggerEnter2D(Collider2D collision){
         if(collision.tag == "Player"){
-            infoText.SetActive(true);
+           isPlayerInCollider = true;
         }
     }
      private void OnTriggerExit2D(Collider2D collision){
         if(collision.tag == "Player"){
-            infoText.SetActive(false);
+           isPlayerInCollider = false;
         }
     }
 }
