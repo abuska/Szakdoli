@@ -20,7 +20,6 @@ public class EnemyProjectile : EnemyDamage{
         if(lifeTime>resetTime){
             gameObject.SetActive(false);
         }
-        Physics2D.IgnoreLayerCollision(11,12, true); //Ignorálja a létrákat
     }
 
     private void OnTriggerEnter2D(Collider2D collision){

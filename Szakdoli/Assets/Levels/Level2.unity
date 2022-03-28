@@ -2116,6 +2116,14 @@ PrefabInstance:
       propertyPath: playerHealth
       value: 
       objectReference: {fileID: 159177116}
+    - target: {fileID: 3595137052991357410, guid: 44a94bffc7e75bd40855028c9df58a22, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -40.070984
+      objectReference: {fileID: 0}
+    - target: {fileID: 3595137052991357410, guid: 44a94bffc7e75bd40855028c9df58a22, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -16.579956
+      objectReference: {fileID: 0}
     - target: {fileID: 3595137053160029524, guid: 44a94bffc7e75bd40855028c9df58a22, type: 3}
       propertyPath: playerHealth
       value: 
@@ -2207,6 +2215,22 @@ PrefabInstance:
     - target: {fileID: 3595137053386294268, guid: 44a94bffc7e75bd40855028c9df58a22, type: 3}
       propertyPath: m_Name
       value: UICanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 3595137053697144038, guid: 44a94bffc7e75bd40855028c9df58a22, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -40.070984
+      objectReference: {fileID: 0}
+    - target: {fileID: 3595137053697144038, guid: 44a94bffc7e75bd40855028c9df58a22, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -16.581055
+      objectReference: {fileID: 0}
+    - target: {fileID: 3595137054460708008, guid: 44a94bffc7e75bd40855028c9df58a22, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -40.071045
+      objectReference: {fileID: 0}
+    - target: {fileID: 3595137054460708008, guid: 44a94bffc7e75bd40855028c9df58a22, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -16.579956
       objectReference: {fileID: 0}
     - target: {fileID: 3595137054507190516, guid: 44a94bffc7e75bd40855028c9df58a22, type: 3}
       propertyPath: playerHealth
@@ -5983,7 +6007,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5896979469030888295, guid: 3771718621a87c741a9d3d99887b2149, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5896979469030888295, guid: 3771718621a87c741a9d3d99887b2149, type: 3}
       propertyPath: m_AutoTiling
