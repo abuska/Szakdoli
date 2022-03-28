@@ -19,6 +19,16 @@ public class PlayerMovement : MonoBehaviour{
     public float gravityScale{get; private set; }
     //private float wallJumpCooldown;
 
+    //Ha a karakter még pont ne ért le a földre, de a játékos már megnyomta a gombot akkor nem jön létre az ugrás,
+    //a jobb játékélmény miatt kell ez a timer, hogy egy pár mp-ig tárolja az ugrás parancsot
+    private float jumpRememberTime = 0.2f;
+    private float jumpRememberTimer;
+
+    //Ground timer a jump timerhez hasonlóan
+    private float groundRememberTime = 0.1f;
+    private float groundRememberTimer;
+
+
     private float horizontalInput;
     private float verticalInput;
 
@@ -52,13 +62,30 @@ public class PlayerMovement : MonoBehaviour{
 
     private void Jump(){
         //jump height is depend jumpPower and gravityScale
-         if(Input.GetKey(KeyCode.Space) && canJump()){
+        jumpRememberTimer -= Time.deltaTime;
+        if(Input.GetKey(KeyCode.Space) ){
+            jumpRememberTimer = jumpRememberTime;
+
+        }
+         if(canJump() && (jumpRememberTimer > 0)){
+            jumpRememberTimer = 0;
+            groundRememberTimer = 0;
             body.velocity = new Vector2(body.velocity.x, jumpPower);
             anim.SetTrigger("jump");       
         }
     }
 
+
+
     private void Move(){
+
+        //https://www.youtube.com/watch?v=vFsJIrm2btU
+        //TODO
+
+        /*float velocity = body.velocity.x;
+        velocity += horizontalInput;
+        velocity *= Mathf.Pow(1f - horizontalInput, Time.deltaTime * 10f);
+        body.velocity = new Vector2(velocity, body.velocity.y);*/
         body.velocity = new Vector2(horizontalInput * speed, body.velocity.y);
     }
 
@@ -88,8 +115,15 @@ public class PlayerMovement : MonoBehaviour{
         return horizontalInput !=0;
     }
     private bool isGrounded(){
+        groundRememberTimer -= Time.deltaTime;
+
         RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0, Vector2.down, 0.1f, groundLayer);
-        return raycastHit.collider != null;
+        
+        if(raycastHit.collider != null || groundRememberTimer > 0){
+            groundRememberTimer = groundRememberTime;
+            return true;
+        }
+        return false; //raycastHit.collider != null;
     }
 
     private bool canClimb(){
