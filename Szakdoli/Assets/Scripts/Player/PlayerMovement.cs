@@ -62,6 +62,7 @@ public class PlayerMovement : MonoBehaviour{
                     Jump();
                 }      
             }
+            Debug.Log(body.gravityScale);
             
             //Set animator
             anim.SetBool("walk", isWalk());
@@ -98,6 +99,11 @@ public class PlayerMovement : MonoBehaviour{
         if(shieldUpTimer > 0.5){
             anim.SetBool("isShieldUp", !anim.GetBool("isShieldUp"));
             shieldUpTimer = 0;
+            if(anim.GetBool("isShieldUp")){
+                body.gravityScale = gravityScale/3;
+            }else{
+                body.gravityScale = gravityScale;
+            }
         } 
     }
 
@@ -113,7 +119,13 @@ public class PlayerMovement : MonoBehaviour{
             anim.SetBool("isClimb", false);
             body.velocity = new Vector2(body.velocity.x, 0);
         }else if((Mathf.Abs(horizontalInput) > 0 && !isGrounded()) || !onLadder()){
-            body.gravityScale = gravityScale;
+            //TODO ezt szebben meg kéne oldani éééés a zuhanás még nem oké
+           if(playerName=="Olaf" && anim.GetBool("isShieldUp")!=null && anim.GetBool("isShieldUp")){
+               body.gravityScale = gravityScale/3;
+            }else{
+                body.gravityScale = gravityScale;
+            }
+
             anim.SetBool("isClimb", false);
             anim.SetBool("onLadder", false);
         }else if(isGrounded() && onLadder()){
