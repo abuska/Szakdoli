@@ -31,6 +31,8 @@ public class PlayerMovement : MonoBehaviour{
     private float horizontalInput;
     private float verticalInput;
 
+    private float shieldUpTimer = Mathf.Infinity;
+
 
     private void Awake(){   
         body = GetComponent<Rigidbody2D>();
@@ -43,7 +45,11 @@ public class PlayerMovement : MonoBehaviour{
             horizontalInput = Input.GetAxis("Horizontal");
             verticalInput = Input.GetAxis("Vertical");
             FlipPlayerImage();
-
+            if(playerName=="Olaf" && Input.GetKey(KeyCode.Space) && shieldUpTimer > 0.5){
+                anim.SetBool("isShieldUp", !anim.GetBool("isShieldUp"));
+                shieldUpTimer = 0;
+            } 
+            shieldUpTimer +=Time.deltaTime;
             if((!isOnWall() && isGrounded())){
                 Debug.Log(groundRememberTimer);
                 Move();
@@ -66,7 +72,7 @@ public class PlayerMovement : MonoBehaviour{
             jumpRememberTimer = jumpRememberTime;
 
         }
-         if(canJump() && (jumpRememberTimer > 0)){
+        if(canJump() && (jumpRememberTimer > 0)){
             jumpRememberTimer = 0;
             body.velocity = new Vector2(body.velocity.x, jumpPower);
             anim.SetTrigger("jump");       
