@@ -102,4 +102,7 @@ public class PlayerManager : MonoBehaviour
         return players[index];
     }
 
+    public string getActivePlayerName(){
+        return players[activePlayerIndex].GetComponent<PlayerMovement>().getPlayerName();
+    }
 }

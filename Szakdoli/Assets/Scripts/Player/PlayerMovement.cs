@@ -17,7 +17,6 @@ public class PlayerMovement : MonoBehaviour{
     private BoxCollider2D boxCollider;
 
     public float gravityScale{get; private set; }
-    //private float wallJumpCooldown;
 
     //Ha a karakter még pont ne ért le a földre, de a játékos már megnyomta az ugrás gombot akkor nem jön létre az ugrás,
     //a jobb játékélmény miatt kell ez a timer, hogy egy pár mp-ig tárolja az ugrás parancsot, így gördülékenyebbnek hat a játékmenet
@@ -168,62 +167,7 @@ public class PlayerMovement : MonoBehaviour{
         body.gravityScale = gravityScale;
     }
 
-
-/////////////////////////////////////////////////////////////////////////////
-
-/*
-    private void JumpWithWallJump(){
-        //jump height is depend jumpPower and gravityScale
-         if(Input.GetKey(KeyCode.Space)){
-            if(isGrounded()){
-                body.velocity = new Vector2(body.velocity.x, jumpPower);
-                anim.SetTrigger("jump");
-            }else if (isOnWall() && !isGrounded()){
-                if(horizontalInput == 0){
-                    body.velocity = new Vector2(-Mathf.Sign(transform.localScale.x) * 10, 0);
-                    transform.localScale = new Vector3(-Mathf.Sign(transform.localScale.x), transform.localScale.y, transform.localScale.z);
-                }else{
-                    body.velocity = new Vector2(-Mathf.Sign(transform.localScale.x) * 3, 6);
-                }
-                wallJumpCooldown = 0;
-                
-            }
-           
-        }
+    public string getPlayerName(){
+        return playerName;
     }
-    private void UpdateWithWallJump(){
-        horizontalInput = Input.GetAxis("Horizontal");
-        FlipPlayerImage();
-
-        if(wallJumpCooldown > 0.2f){
-            
-            Move();
-            if(isOnWall() && !isGrounded()){
-                body.gravityScale = 0;
-                body.velocity = Vector2.zero;
-            }else{
-                body.gravityScale = gravityScale;
-            }
-            Jump(); 
-        }else{
-            wallJumpCooldown += Time.deltaTime;
-        }
-        
-        //Set animator
-        anim.SetBool("walk", isWalk());
-        anim.SetBool("grounded", isGrounded());
-    }
-    private void OnCollisionEnter2D(Collision2D collision){
-        if(collision.gameObject.tag == "Ground"){
-            setGrounded(true);
-        }
-        
-    }
-    private void setGrounded(bool param){
-        grounded = param;
-    }
-    private bool isJumpEnabled(){
-        return Input.GetKey(KeyCode.Space) && isGrounded();
-    }
-*/
 }
