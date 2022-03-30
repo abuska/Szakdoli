@@ -58,6 +58,9 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 1024
+  fireballLayer:
+    serializedVersion: 2
+    m_Bits: 65536
   damage: 1
   attackCooldown: 2
 --- !u!50 &6656376653997452647
@@ -242,6 +245,22 @@ PrefabInstance:
     - target: {fileID: 7409328658245564934, guid: 1ab5dc5b604664e46ad533a9235506d5, type: 3}
       propertyPath: m_Name
       value: Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 7409328658245564935, guid: 1ab5dc5b604664e46ad533a9235506d5, type: 3}
+      propertyPath: m_Size.x
+      value: 0.6053934
+      objectReference: {fileID: 0}
+    - target: {fileID: 7409328658245564935, guid: 1ab5dc5b604664e46ad533a9235506d5, type: 3}
+      propertyPath: m_Size.y
+      value: 0.8167534
+      objectReference: {fileID: 0}
+    - target: {fileID: 7409328658245564935, guid: 1ab5dc5b604664e46ad533a9235506d5, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.0000014305115
+      objectReference: {fileID: 0}
+    - target: {fileID: 7409328658245564935, guid: 1ab5dc5b604664e46ad533a9235506d5, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.005941391
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1ab5dc5b604664e46ad533a9235506d5, type: 3}

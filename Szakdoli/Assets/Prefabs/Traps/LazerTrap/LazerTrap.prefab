@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3584954615701091383}
   - component: {fileID: 3584954615701091379}
   - component: {fileID: 3584954615701091378}
-  m_Layer: 11
+  m_Layer: 18
   m_Name: LazerTrap
   m_TagString: Enemy
   m_Icon: {fileID: 0}

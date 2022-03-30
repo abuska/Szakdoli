@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour{
     [SerializeField] private string playerName;
     
     [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private LayerMask shieldLayer;
     [SerializeField] private LayerMask wallLayer;
     [SerializeField] private LayerMask ladderLayer;
 
@@ -44,43 +45,44 @@ public class PlayerMovement : MonoBehaviour{
     private void Update(){
             horizontalInput = Input.GetAxis("Horizontal");
             verticalInput = Input.GetAxis("Vertical");
+
             FlipPlayerImage();
-            if(playerName=="Olaf" && Input.GetKey(KeyCode.Space) && shieldUpTimer > 0.5){
-                anim.SetBool("isShieldUp", !anim.GetBool("isShieldUp"));
-                shieldUpTimer = 0;
-            } 
-            shieldUpTimer +=Time.deltaTime;
+            
             if((!isOnWall() && isGrounded())){
                 Debug.Log(groundRememberTimer);
                 Move();
             }
             
             Climb();
-            Jump(); 
+            
+            if(Input.GetKey(KeyCode.Space) ){
+                jumpRememberTimer = jumpRememberTime;
+                if(playerName=="Olaf"){
+                    SetShield();
+                }else if(playerName=="Erik"){
+                    Jump();
+                }      
+            }
             
             //Set animator
             anim.SetBool("walk", isWalk());
             anim.SetBool("grounded", isGrounded());
+
+            shieldUpTimer +=Time.deltaTime;
+            jumpRememberTimer -= Time.deltaTime;
     }
     
     //MovementMethods
 
     private void Jump(){
         //jump height is depend jumpPower and gravityScale
-        jumpRememberTimer -= Time.deltaTime;
-        if(Input.GetKey(KeyCode.Space) ){
-            jumpRememberTimer = jumpRememberTime;
-
-        }
+       
         if(canJump() && (jumpRememberTimer > 0)){
             jumpRememberTimer = 0;
             body.velocity = new Vector2(body.velocity.x, jumpPower);
             anim.SetTrigger("jump");       
         }
     }
-
-
-
     private void Move(){
 
         //https://www.youtube.com/watch?v=vFsJIrm2btU
@@ -91,6 +93,13 @@ public class PlayerMovement : MonoBehaviour{
         velocity *= Mathf.Pow(1f - horizontalInput, Time.deltaTime * 10f);
         body.velocity = new Vector2(velocity, body.velocity.y);*/
         body.velocity = new Vector2(horizontalInput * speed, body.velocity.y);
+    }
+
+    public void SetShield(){
+        if(shieldUpTimer > 0.5){
+            anim.SetBool("isShieldUp", !anim.GetBool("isShieldUp"));
+            shieldUpTimer = 0;
+        } 
     }
 
     private void Climb(){
@@ -137,16 +146,18 @@ public class PlayerMovement : MonoBehaviour{
     private bool isGrounded(){
         groundRememberTimer += Time.deltaTime;
 
-        RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0, Vector2.down, 0.1f, groundLayer);
+        RaycastHit2D raycastHitGround = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0, Vector2.down, 0.1f, groundLayer);
+        RaycastHit2D raycastHitShield = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0, Vector2.down, 0.1f, shieldLayer);
+        bool hit = raycastHitGround.collider != null || raycastHitShield.collider != null;
 
-        if(raycastHit.collider != null){
+        if(hit){
             //TODO a nagy eséstől sérüljön a karakter;
             /*if(groundRememberTimer>damageGroundTime){
                 GetComponent<Health>().TakeDamage(1);
             }*/
             groundRememberTimer = 0;
         }
-        return raycastHit.collider != null || groundRememberTimer < groundRememberTime;
+        return hit || groundRememberTimer < groundRememberTime;
     }
 
     private bool onLadder(){
@@ -165,7 +176,7 @@ public class PlayerMovement : MonoBehaviour{
     }
 
     public bool canJump(){
-        return isGrounded() && playerName=="Erik";
+        return isGrounded();
     }
     
     public void setGravityScale(float value){

@@ -41,6 +41,9 @@ public class Health : MonoBehaviour{
         //ha a karekter nem hal meg a sebzéstől elindul a sérülés animáció, illetve elindul az iFrame működése
         if(currentHealth>0){
             anim.SetTrigger("hurt");
+            if(anim.GetBool("isShieldUp")!=null && anim.GetBool("isShieldUp")==true){
+                GetComponent<PlayerMovement>().SetShield();
+            }
             StartCoroutine(Invonerability());
         //Abban az esetben ha a karakternek már nincs elég életereje.
         }else{
