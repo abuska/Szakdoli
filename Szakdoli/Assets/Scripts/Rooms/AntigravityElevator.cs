@@ -6,6 +6,7 @@ public class AntigravityElevator : MonoBehaviour{
     [SerializeField] private float speed;
     public float gravityScale{get; private set; }
 
+
     private void OnTriggerEnter2D(Collider2D collision){
         if(collision.tag == "Player"){
             gravityScale = collision.GetComponent<Rigidbody2D>().gravityScale;

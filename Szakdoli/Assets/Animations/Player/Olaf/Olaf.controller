@@ -367,6 +367,32 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!1102 &1531290558520033671
+AnimatorState:
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Ladder_climb
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: 7400000, guid: 2ab8b83eac280d040a83a4fc859d6e51, type: 2}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
 --- !u!1102 &2460742213177649933
 AnimatorState:
   serializedVersion: 6
@@ -466,16 +492,22 @@ AnimatorStateMachine:
     m_Position: {x: 230, y: -170, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 3021528174236091630}
-    m_Position: {x: 520, y: -110, z: 0}
+    m_Position: {x: 770, y: -40, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -7793816759608906069}
     m_Position: {x: -50, y: -190, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -573355068158387461}
-    m_Position: {x: 610, y: -260, z: 0}
+    m_Position: {x: 250, y: -410, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -2469390016688316564}
-    m_Position: {x: 680, y: -50, z: 0}
+    m_Position: {x: 770, y: 20, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: 8214275168867884525}
+    m_Position: {x: 500, y: -230, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: 1531290558520033671}
+    m_Position: {x: 750, y: -230, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions:
   - {fileID: -1459334437623888679}
@@ -484,7 +516,7 @@ AnimatorStateMachine:
   m_EntryTransitions: []
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours: []
-  m_AnyStatePosition: {x: 370, y: -260, z: 0}
+  m_AnyStatePosition: {x: 140, y: -330, z: 0}
   m_EntryPosition: {x: 50, y: 120, z: 0}
   m_ExitPosition: {x: 800, y: 120, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
@@ -511,6 +543,32 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!1102 &8214275168867884525
+AnimatorState:
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Ladder_idle
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: 7400000, guid: d4cb92e0aacfe8840a115ec82ee892a5, type: 2}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
 --- !u!1102 &8362262075445391502
 AnimatorState:
   serializedVersion: 6

@@ -19,15 +19,15 @@ public class PlayerMovement : MonoBehaviour{
     public float gravityScale{get; private set; }
     //private float wallJumpCooldown;
 
-    //Ha a karakter még pont ne ért le a földre, de a játékos már megnyomta a gombot akkor nem jön létre az ugrás,
-    //a jobb játékélmény miatt kell ez a timer, hogy egy pár mp-ig tárolja az ugrás parancsot
+    //Ha a karakter még pont ne ért le a földre, de a játékos már megnyomta az ugrás gombot akkor nem jön létre az ugrás,
+    //a jobb játékélmény miatt kell ez a timer, hogy egy pár mp-ig tárolja az ugrás parancsot, így gördülékenyebbnek hat a játékmenet
     private float jumpRememberTime = 0.2f;
     private float jumpRememberTimer;
 
     //Ground timer a jump timerhez hasonlóan
     private float groundRememberTime = 0.1f;
-    private float groundRememberTimer;
-
+    private float damageGroundTime = 5f;
+    private float groundRememberTimer = Mathf.Infinity;
 
     private float horizontalInput;
     private float verticalInput;
@@ -45,7 +45,8 @@ public class PlayerMovement : MonoBehaviour{
             verticalInput = Input.GetAxis("Vertical");
             FlipPlayerImage();
 
-            if(!(isOnWall() && !isGrounded())){
+            if((!isOnWall() && isGrounded())){
+                Debug.Log(groundRememberTimer);
                 Move();
             }
             
@@ -68,7 +69,6 @@ public class PlayerMovement : MonoBehaviour{
         }
          if(canJump() && (jumpRememberTimer > 0)){
             jumpRememberTimer = 0;
-            groundRememberTimer = 0;
             body.velocity = new Vector2(body.velocity.x, jumpPower);
             anim.SetTrigger("jump");       
         }
@@ -89,15 +89,31 @@ public class PlayerMovement : MonoBehaviour{
     }
 
     private void Climb(){
-        if(canClimb()){
+        if(onLadder() && Mathf.Abs(verticalInput) > 0 && !anim.GetBool("onLadder")){
+            anim.SetBool("onLadder", true);
             body.gravityScale = 0;
             body.velocity = new Vector2(body.velocity.x, 0);
-            if(Mathf.Abs(verticalInput) > 0){
-                body.velocity = new Vector2(body.velocity.x, verticalInput * speed);
-            } 
-        }else{
+        }else if(onLadder() && Mathf.Abs(verticalInput) > 0 && anim.GetBool("onLadder")){
+            anim.SetBool("isClimb", true);
+            body.velocity = new Vector2(body.velocity.x, verticalInput * speed);  
+        }else if(onLadder() && Mathf.Abs(verticalInput) <= 0 && anim.GetBool("isClimb")){
+            anim.SetBool("isClimb", false);
+            body.velocity = new Vector2(body.velocity.x, 0);
+        }else if((Mathf.Abs(horizontalInput) > 0 && !isGrounded()) || !onLadder()){
             body.gravityScale = gravityScale;
+            anim.SetBool("isClimb", false);
+            anim.SetBool("onLadder", false);
+        }else if(isGrounded() && onLadder()){
+            body.gravityScale = 0;
+            body.velocity = new Vector2(body.velocity.x, 0);
+            anim.SetBool("isClimb", false);
+            anim.SetBool("onLadder", false);
         }
+
+
+
+
+
         
     }
     private void FlipPlayerImage(){
@@ -114,18 +130,21 @@ public class PlayerMovement : MonoBehaviour{
         return horizontalInput !=0;
     }
     private bool isGrounded(){
-        groundRememberTimer -= Time.deltaTime;
+        groundRememberTimer += Time.deltaTime;
 
         RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0, Vector2.down, 0.1f, groundLayer);
-        
-        if(raycastHit.collider != null || groundRememberTimer > 0){
-            groundRememberTimer = groundRememberTime;
-            return true;
+
+        if(raycastHit.collider != null){
+            //TODO a nagy eséstől sérüljön a karakter;
+            /*if(groundRememberTimer>damageGroundTime){
+                GetComponent<Health>().TakeDamage(1);
+            }*/
+            groundRememberTimer = 0;
         }
-        return false; //raycastHit.collider != null;
+        return raycastHit.collider != null || groundRememberTimer < groundRememberTime;
     }
 
-    private bool canClimb(){
+    private bool onLadder(){
         RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0, Vector2.down, 0.1f, ladderLayer);
         return raycastHit.collider != null;
 

@@ -22,6 +22,8 @@ public class Elevator : MonoBehaviour
     private bool moveEdge1;
     private bool isMove;
 
+    private float changeDirectionTimer = Mathf.Infinity;
+
     void Update()
     {
         //TODO ÁTÍRNI HOGY MINDEN IRÁNYBA MŰKÖDJÖN
@@ -29,6 +31,9 @@ public class Elevator : MonoBehaviour
             isMove = true;
         }
         if(isMove){
+            if(Input.GetKey(KeyCode.E) && changeDirectionTimer > 0.5){
+                ChangeDirection();
+            }
             if(moveEdge1){
                 if(elevator.position.y <= edge1.position.y){
                     MoveInDirection(1);
@@ -44,12 +49,14 @@ public class Elevator : MonoBehaviour
                 }
             }
         }
+        changeDirectionTimer +=Time.deltaTime;
             
        
 
     }
      //Irányváltás
     private void ChangeDirection(){
+            changeDirectionTimer = 0;
             isMove = false;
             moveEdge1 = !moveEdge1;  
     }
