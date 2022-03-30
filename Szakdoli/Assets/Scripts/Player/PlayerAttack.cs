@@ -25,10 +25,8 @@ public class PlayerAttack : MonoBehaviour{
     }
     void Update(){
         if(Input.GetMouseButton(0) && coolDownTimer > attackCooldown && playerMovement.canAttack()){
-            playerMovement.SetShield();
             Attack();
         }else if(Input.GetMouseButton(1) && coolDownTimer > attackCooldown && playerMovement.canAttack()){
-            playerMovement.SetShield();
             Fire();
         }
         coolDownTimer += Time.deltaTime;
@@ -44,7 +42,6 @@ public class PlayerAttack : MonoBehaviour{
     private void TakeEnemyDamage(){
         RaycastHit2D raycastHit = Physics2D.BoxCast(swordCollider.bounds.center + transform.right * transform.localScale.x,
         new Vector3(swordCollider.bounds.size.x, swordCollider.bounds.size.y, swordCollider.bounds.size.z), 0, Vector2.left, 0, enemyLayer);
-        Debug.Log(raycastHit);
         if(raycastHit.collider != null && raycastHit.collider.GetComponent<Health>() != null && raycastHit.collider.tag != "Player"){
             raycastHit.collider.GetComponent<Health>().TakeDamage(damage);
         }

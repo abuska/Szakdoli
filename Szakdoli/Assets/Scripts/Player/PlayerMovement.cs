@@ -49,7 +49,6 @@ public class PlayerMovement : MonoBehaviour{
             FlipPlayerImage();
             
             if((!isOnWall() && isGrounded())){
-                Debug.Log(groundRememberTimer);
                 Move();
             }
             
