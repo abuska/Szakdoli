@@ -161,8 +161,8 @@ MonoBehaviour:
   attackCooldown: 0.5
   enemyLayer:
     serializedVersion: 2
-    m_Bits: 0
-  damage: 0
+    m_Bits: 2048
+  damage: 1
   swordCollider: {fileID: 0}
   firePoint: {fileID: 5816209264618019020}
   fireballs:
