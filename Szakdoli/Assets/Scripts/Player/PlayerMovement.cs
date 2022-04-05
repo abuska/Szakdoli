@@ -190,8 +190,7 @@ public class PlayerMovement : MonoBehaviour{
     }
     
     public void setGravityScale(float value){
-        gravityScale = value;
-        body.gravityScale = gravityScale;
+        body.gravityScale = value;
     }
 
     public string getPlayerName(){
