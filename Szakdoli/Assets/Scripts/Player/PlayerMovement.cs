@@ -48,7 +48,7 @@ public class PlayerMovement : MonoBehaviour{
 
             FlipPlayerImage();
             
-            if((!isOnWall() && isGrounded())){
+            if((!isOnWall() /*&& isGrounded()*/)){
                 Move();
             }
             
@@ -62,7 +62,6 @@ public class PlayerMovement : MonoBehaviour{
                     Jump();
                 }      
             }
-            Debug.Log(body.gravityScale);
             
             //Set animator
             anim.SetBool("walk", isWalk());
@@ -100,9 +99,9 @@ public class PlayerMovement : MonoBehaviour{
             anim.SetBool("isShieldUp", !anim.GetBool("isShieldUp"));
             shieldUpTimer = 0;
             if(anim.GetBool("isShieldUp")){
-                body.gravityScale = gravityScale/3;
+                setGravityScale(gravityScale/3);
             }else{
-                body.gravityScale = gravityScale;
+                setGravityScale(gravityScale);
             }
         } 
     }
@@ -110,7 +109,7 @@ public class PlayerMovement : MonoBehaviour{
     private void Climb(){
         if(onLadder() && Mathf.Abs(verticalInput) > 0 && !anim.GetBool("onLadder")){
             anim.SetBool("onLadder", true);
-            body.gravityScale = 0;
+            setGravityScale(0);
             body.velocity = new Vector2(body.velocity.x, 0);
         }else if(onLadder() && Mathf.Abs(verticalInput) > 0 && anim.GetBool("onLadder")){
             anim.SetBool("isClimb", true);
@@ -121,15 +120,15 @@ public class PlayerMovement : MonoBehaviour{
         }else if((Mathf.Abs(horizontalInput) > 0 && !isGrounded()) || !onLadder()){
             //TODO ezt szebben meg kéne oldani éééés a zuhanás még nem oké
            if(playerName=="Olaf" && anim.GetBool("isShieldUp")!=null && anim.GetBool("isShieldUp")){
-               body.gravityScale = gravityScale/3;
+               setGravityScale(gravityScale/3);
             }else{
-                body.gravityScale = gravityScale;
+                setGravityScale(gravityScale);
             }
 
             anim.SetBool("isClimb", false);
             anim.SetBool("onLadder", false);
         }else if(isGrounded() && onLadder()){
-            body.gravityScale = 0;
+            setGravityScale(0);
             body.velocity = new Vector2(body.velocity.x, 0);
             anim.SetBool("isClimb", false);
             anim.SetBool("onLadder", false);
