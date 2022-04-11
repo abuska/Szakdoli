@@ -22,6 +22,7 @@ public class MeleeEnemy : MonoBehaviour
     [Header ("Collider Parameters")]
     [SerializeField] private float colliderDistance;
     [SerializeField] private BoxCollider2D boxCollider;
+    [SerializeField] private BoxCollider2D swordCollider;
    
     //playerLayer: az itt megkapott paraméterű layer objektumaira fog támadni az enemy, jelen esetbe ez a player layer.
     [Header ("Player Layer")]
@@ -47,6 +48,7 @@ public class MeleeEnemy : MonoBehaviour
         coolDownTimer += Time.deltaTime;
         if(PlayerInSight()){
             if(coolDownTimer >= attackCooldown){
+                swordCollider.enabled = true;
                 //Timer beállítása, és a támadás animáció indítása.
                 coolDownTimer = 0;
                 anim.SetTrigger("attack");
@@ -90,7 +92,8 @@ public class MeleeEnemy : MonoBehaviour
     private void DamagePlayer(){
         if(PlayerInSight()){
             playerHealth.TakeDamage(damage);
-        }  
+        }
+        swordCollider.enabled = false;  
     }
 
 
