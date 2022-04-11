@@ -58,6 +58,9 @@ TagManager:
   - name: Ground
     uniqueID: 3801367349
     locked: 0
+  - name: Decors
+    uniqueID: 1255246925
+    locked: 0
   - name: Texts
     uniqueID: 2686197441
     locked: 0
