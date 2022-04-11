@@ -1057,6 +1057,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1114639661}
     m_Modifications:
+    - target: {fileID: 3690763860854933978, guid: 95fb3aa9f6354074d9dbee4d0f5ddfcf, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3690763860854933979, guid: 95fb3aa9f6354074d9dbee4d0f5ddfcf, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 1.51
+      objectReference: {fileID: 0}
+    - target: {fileID: 3690763860854933980, guid: 95fb3aa9f6354074d9dbee4d0f5ddfcf, type: 3}
+      propertyPath: m_Size.x
+      value: 6.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3690763860854933980, guid: 95fb3aa9f6354074d9dbee4d0f5ddfcf, type: 3}
+      propertyPath: m_Size.y
+      value: 0.86
+      objectReference: {fileID: 0}
+    - target: {fileID: 3690763860854933980, guid: 95fb3aa9f6354074d9dbee4d0f5ddfcf, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 12fb0425567eecf49ab8088cb888f2d3, type: 3}
+    - target: {fileID: 3690763860854933980, guid: 95fb3aa9f6354074d9dbee4d0f5ddfcf, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3690763861241244999, guid: 95fb3aa9f6354074d9dbee4d0f5ddfcf, type: 3}
       propertyPath: m_Name
       value: HelpBox
@@ -3230,6 +3254,58 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1114639661}
     m_Modifications:
+    - target: {fileID: 3690763860854933978, guid: 95fb3aa9f6354074d9dbee4d0f5ddfcf, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3690763860854933979, guid: 95fb3aa9f6354074d9dbee4d0f5ddfcf, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -1.21
+      objectReference: {fileID: 0}
+    - target: {fileID: 3690763860854933979, guid: 95fb3aa9f6354074d9dbee4d0f5ddfcf, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 1.09
+      objectReference: {fileID: 0}
+    - target: {fileID: 3690763860854933980, guid: 95fb3aa9f6354074d9dbee4d0f5ddfcf, type: 3}
+      propertyPath: m_Size.x
+      value: 6.28
+      objectReference: {fileID: 0}
+    - target: {fileID: 3690763860854933980, guid: 95fb3aa9f6354074d9dbee4d0f5ddfcf, type: 3}
+      propertyPath: m_Size.y
+      value: 1.76
+      objectReference: {fileID: 0}
+    - target: {fileID: 3690763860854933980, guid: 95fb3aa9f6354074d9dbee4d0f5ddfcf, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: e648db390bef2b74788b1dcbc86a7971, type: 3}
+    - target: {fileID: 3690763860854933980, guid: 95fb3aa9f6354074d9dbee4d0f5ddfcf, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3690763860854933980, guid: 95fb3aa9f6354074d9dbee4d0f5ddfcf, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3690763860854933980, guid: 95fb3aa9f6354074d9dbee4d0f5ddfcf, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3690763860854933980, guid: 95fb3aa9f6354074d9dbee4d0f5ddfcf, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3690763860854933980, guid: 95fb3aa9f6354074d9dbee4d0f5ddfcf, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3690763861113433855, guid: 95fb3aa9f6354074d9dbee4d0f5ddfcf, type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3690763861113433855, guid: 95fb3aa9f6354074d9dbee4d0f5ddfcf, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1695939721
+      objectReference: {fileID: 0}
     - target: {fileID: 3690763861241244999, guid: 95fb3aa9f6354074d9dbee4d0f5ddfcf, type: 3}
       propertyPath: m_Name
       value: HelpBox (1)

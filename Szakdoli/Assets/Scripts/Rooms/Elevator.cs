@@ -70,6 +70,8 @@ public class Elevator : MonoBehaviour
     }
     private bool isPlayerInElevator(){
         RaycastHit2D raycastHit = Physics2D.BoxCast(elevatorCollider.bounds.center, elevatorCollider.bounds.size, 0, Vector2.down, 0.1f, playerLayer);
+        /*Debug.Log(raycastHit.collider.name);
+        TODO megcsinálni, hogy csak akkor induljon el ha az aktív player áll rajta és nyomja meg a gombot */
         return raycastHit.collider != null;
     }
 }
