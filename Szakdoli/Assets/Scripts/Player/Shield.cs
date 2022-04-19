@@ -17,8 +17,6 @@ public class Shield : MonoBehaviour
     void Update()
     {
         if(anim.GetBool("isShieldUp") && !isShieldUp){
-          
-            
             isShieldUp = true;
             boxCollider.usedByEffector = true;
             Physics2D.IgnoreLayerCollision( 10, 17, false);

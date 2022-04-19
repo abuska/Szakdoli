@@ -11,9 +11,13 @@ public class MainMenu : MonoBehaviour
         Application.Quit();
     }
     public void goToCreditals(){
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2);
     }
     public void goToMainManu(){
         SceneManager.LoadScene(0);
+    }
+
+    public void goToPassword(){
+        SceneManager.LoadScene(1);
     }
 }
