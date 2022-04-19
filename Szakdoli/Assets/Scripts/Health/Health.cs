@@ -71,6 +71,10 @@ public class Health : MonoBehaviour{
                     GetComponent<MeleeEnemy>().enabled = false;
                     gameObject.SetActive(false);
                 }
+                if(GetComponent<RangedEnemy>() != null){
+                    GetComponent<RangedEnemy>().enabled = false;
+                    gameObject.SetActive(false);
+                }
 
                 dead = true;
             }
