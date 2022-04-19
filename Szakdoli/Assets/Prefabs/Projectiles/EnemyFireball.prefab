@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1932657854154743512}
   - component: {fileID: 6781879882141793329}
   - component: {fileID: 7104670480568054851}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: EnemyFireball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -166,4 +166,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 1
   speed: 5
-  resetTime: 5
+  resetTime: 10

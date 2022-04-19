@@ -47,9 +47,7 @@ public class Password : MonoBehaviour
     }
         
     public void checkPassword(){
-        Debug.Log("Hey im pw"+ input.text);
         if(levelPassword.TryGetValue(input.text, out string value)){
-            Debug.Log(levelPassword[input.text]);
             SceneManager.LoadScene(levelPassword[input.text]);
         }else{
            warningText.enabled = true;
