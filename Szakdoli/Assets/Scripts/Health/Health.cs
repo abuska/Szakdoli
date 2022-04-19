@@ -75,6 +75,10 @@ public class Health : MonoBehaviour{
                     GetComponent<RangedEnemy>().enabled = false;
                     gameObject.SetActive(false);
                 }
+                if(GetComponent<ArrowTrap>() != null){
+                    GetComponent<ArrowTrap>().enabled = false;
+                    gameObject.SetActive(false);
+                }
 
                 dead = true;
             }

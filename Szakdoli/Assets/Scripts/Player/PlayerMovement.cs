@@ -133,12 +133,7 @@ public class PlayerMovement : MonoBehaviour{
             anim.SetBool("isClimb", false);
             anim.SetBool("onLadder", false);
         }
-
-
-
-
-
-        
+    
     }
     private void FlipPlayerImage(){
         //Flip image according player move
