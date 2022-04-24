@@ -40,5 +40,9 @@ public class GameManager : MonoBehaviour
    
     }
 
+    public void goToMainMenu(){
+         SceneManager.LoadScene(0);
+    }
+
 
 }

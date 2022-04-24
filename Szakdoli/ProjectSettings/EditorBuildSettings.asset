@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Levels/Password.unity
     guid: 1460ebec887bbbc4e81cdcc043a8cb3b
   - enabled: 1
+    path: Assets/Levels/Controls.unity
+    guid: 3e14d83e9f0e81b498af9fa67b2b1274
+  - enabled: 1
     path: Assets/Levels/Credits.unity
     guid: 4e3549ceec0069948aaceafa81d0f539
   - enabled: 1
