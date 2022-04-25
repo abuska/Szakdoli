@@ -11,10 +11,10 @@ public class MainMenu : MonoBehaviour
         Application.Quit();
     }
     public void goToCreditals(){
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(3);
     }
     public void goToControls(){
-        SceneManager.LoadScene(3);
+        SceneManager.LoadScene(2);
     }
     public void goToMainManu(){
         SceneManager.LoadScene(0);

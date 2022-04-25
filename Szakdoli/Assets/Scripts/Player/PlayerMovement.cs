@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour{
 
     [SerializeField] private float speed;
     [SerializeField] private float jumpPower;
+    [SerializeField] private float runSpeed;
     [SerializeField] private string playerName;
     
     [SerializeField] private LayerMask groundLayer;
@@ -28,11 +29,15 @@ public class PlayerMovement : MonoBehaviour{
     private float groundRememberTime = 0.1f;
     private float damageGroundTime = 5f;
     private float groundRememberTimer = Mathf.Infinity;
+    private float shieldUpTimer = Mathf.Infinity;
+    private float runTimer = Mathf.Infinity;
+
+    private float shieldUpTime = 0.5f;
+    private float runTime = 1.5f;
 
     private float horizontalInput;
     private float verticalInput;
-
-    private float shieldUpTimer = Mathf.Infinity;
+  
 
 
     private void Awake(){   
@@ -67,8 +72,9 @@ public class PlayerMovement : MonoBehaviour{
             anim.SetBool("walk", isWalk());
             anim.SetBool("grounded", isGrounded());
 
-            shieldUpTimer +=Time.deltaTime;
+            shieldUpTimer += Time.deltaTime;
             jumpRememberTimer -= Time.deltaTime;
+            runTimer += Time.deltaTime;
     }
     
     //MovementMethods
@@ -83,7 +89,14 @@ public class PlayerMovement : MonoBehaviour{
         }
     }
     private void Move(){
-
+   
+        if(playerName=="Erik" && Input.GetMouseButton(0) && runTimer > runTime){
+            body.velocity = new Vector2(horizontalInput * runSpeed, body.velocity.y);
+            anim.SetTrigger("run");
+            runTimer = 0;
+        }else{
+            body.velocity = new Vector2(horizontalInput * speed, body.velocity.y);
+        }
         //https://www.youtube.com/watch?v=vFsJIrm2btU
         //TODO
 
@@ -91,11 +104,11 @@ public class PlayerMovement : MonoBehaviour{
         velocity += horizontalInput;
         velocity *= Mathf.Pow(1f - horizontalInput, Time.deltaTime * 10f);
         body.velocity = new Vector2(velocity, body.velocity.y);*/
-        body.velocity = new Vector2(horizontalInput * speed, body.velocity.y);
+       
     }
 
     public void SetShield(){
-        if(shieldUpTimer > 0.5){
+        if(shieldUpTimer > shieldUpTime){
             anim.SetBool("isShieldUp", !anim.GetBool("isShieldUp"));
             shieldUpTimer = 0;
             if(anim.GetBool("isShieldUp")){

@@ -1584,7 +1584,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 958057105}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: goToCreditals
+        m_MethodName: goToControls
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
