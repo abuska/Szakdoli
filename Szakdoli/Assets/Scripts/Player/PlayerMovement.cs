@@ -35,6 +35,8 @@ public class PlayerMovement : MonoBehaviour{
     private float shieldUpTime = 0.5f;
     private float runTime = 1.5f;
 
+    private float OlafShieldUpFallingSpeed = -1f;
+
     private float horizontalInput;
     private float verticalInput;
   
@@ -57,8 +59,16 @@ public class PlayerMovement : MonoBehaviour{
                 Move();
             }
             
-            Climb();
-            
+            //TODO kiszervezni a faltörést methbe
+            if(anim.GetBool("walk") == true && playerName=="Erik" && Input.GetMouseButton(0) && runTimer > runTime ){
+
+                //TODO itt van egy olyan hiba h touchpaddal nem működik
+
+                body.velocity = new Vector2(horizontalInput * runSpeed, body.velocity.y);
+                anim.SetTrigger("run");
+                runTimer = 0;
+            }
+
             if(Input.GetKey(KeyCode.Space) ){
                 jumpRememberTimer = jumpRememberTime;
                 if(playerName=="Olaf"){
@@ -66,6 +76,12 @@ public class PlayerMovement : MonoBehaviour{
                 }else if(playerName=="Erik"){
                     Jump();
                 }      
+            }else{
+                Climb();
+            }
+            
+            if(!isGrounded() && !onLadder() && playerName=="Olaf" && anim.GetBool("isShieldUp") ){
+                body.velocity = new Vector2(body.velocity.x, OlafShieldUpFallingSpeed);  
             }
             
             //Set animator
@@ -83,20 +99,16 @@ public class PlayerMovement : MonoBehaviour{
         //jump height is depend jumpPower and gravityScale
        
         if(canJump() && (jumpRememberTimer > 0)){
+            setGravityScale(gravityScale);
             jumpRememberTimer = 0;
             body.velocity = new Vector2(body.velocity.x, jumpPower);
             anim.SetTrigger("jump");       
         }
     }
     private void Move(){
-   
-        if(playerName=="Erik" && Input.GetMouseButton(0) && runTimer > runTime){
-            body.velocity = new Vector2(horizontalInput * runSpeed, body.velocity.y);
-            anim.SetTrigger("run");
-            runTimer = 0;
-        }else{
+      
             body.velocity = new Vector2(horizontalInput * speed, body.velocity.y);
-        }
+        
         //https://www.youtube.com/watch?v=vFsJIrm2btU
         //TODO
 
@@ -111,11 +123,6 @@ public class PlayerMovement : MonoBehaviour{
         if(shieldUpTimer > shieldUpTime){
             anim.SetBool("isShieldUp", !anim.GetBool("isShieldUp"));
             shieldUpTimer = 0;
-            if(anim.GetBool("isShieldUp")){
-                setGravityScale(gravityScale/3);
-            }else{
-                setGravityScale(gravityScale);
-            }
         } 
     }
 
@@ -131,13 +138,7 @@ public class PlayerMovement : MonoBehaviour{
             anim.SetBool("isClimb", false);
             body.velocity = new Vector2(body.velocity.x, 0);
         }else if((Mathf.Abs(horizontalInput) > 0 && !isGrounded()) || !onLadder()){
-            //TODO ezt szebben meg kéne oldani éééés a zuhanás még nem oké
-           if(playerName=="Olaf" && anim.GetBool("isShieldUp")!=null && anim.GetBool("isShieldUp")){
-               setGravityScale(gravityScale/3);
-            }else{
-                setGravityScale(gravityScale);
-            }
-
+            setGravityScale(gravityScale);
             anim.SetBool("isClimb", false);
             anim.SetBool("onLadder", false);
         }else if(isGrounded() && onLadder()){

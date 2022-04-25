@@ -1418,6 +1418,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Erik
       objectReference: {fileID: 0}
+    - target: {fileID: 3655943676648813503, guid: 39ec090ca031a7e43862f8f026b7d5d1, type: 3}
+      propertyPath: m_GravityScale
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 39ec090ca031a7e43862f8f026b7d5d1, type: 3}
 --- !u!1 &4784897939183940814 stripped
