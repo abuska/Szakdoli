@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1394644373619055542}
   - component: {fileID: 1394644373619055543}
   - component: {fileID: 1394644373619055544}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: AntigravityElevator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 1394644373619055545}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.626, y: 8.0159, z: -5.1201563}
-  m_LocalScale: {x: 2.8880198, y: 4.4317102, z: 1}
+  m_LocalScale: {x: 1.4440099, y: 2.6032307, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -97,7 +97,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.0112963915}
+  m_Offset: {x: 0, y: 0.02081585}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -108,7 +108,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.33, y: 5.9625635}
+  m_Size: {x: 1.33, y: 5.927902}
   m_EdgeRadius: 0
 --- !u!114 &1394644373619055544
 MonoBehaviour:
