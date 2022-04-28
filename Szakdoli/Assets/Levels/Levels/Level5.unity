@@ -4768,6 +4768,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1231513277}
     m_Modifications:
+    - target: {fileID: 4681025617624066722, guid: 7c192df362e2f0e4bbe86e66494bbbbb, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 1223904343}
+    - target: {fileID: 4681025617624066722, guid: 7c192df362e2f0e4bbe86e66494bbbbb, type: 3}
+      propertyPath: playerManager
+      value: 
+      objectReference: {fileID: 1131997490}
     - target: {fileID: 4681025617624066732, guid: 7c192df362e2f0e4bbe86e66494bbbbb, type: 3}
       propertyPath: m_Name
       value: Goal
@@ -4778,11 +4786,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4681025617624066733, guid: 7c192df362e2f0e4bbe86e66494bbbbb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -67.17122
+      value: -67.48
       objectReference: {fileID: 0}
     - target: {fileID: 4681025617624066733, guid: 7c192df362e2f0e4bbe86e66494bbbbb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 23.424664
+      value: 24.05
       objectReference: {fileID: 0}
     - target: {fileID: 4681025617624066733, guid: 7c192df362e2f0e4bbe86e66494bbbbb, type: 3}
       propertyPath: m_LocalPosition.z
