@@ -38,15 +38,18 @@ public class PlayerManager : MonoBehaviour
         changePlayerTimer = 0;
     }
     private bool isGameOver(){
-        
-        int playerCounter = players.Length;
+        return getPlayerNumber() == getDeadPlayerNumber();
+    }
+
+    public int getDeadPlayerNumber(){
+        int playerCounter = getPlayerNumber();
         int deadPlayerCounter = 0;
           for(int i = 0 ; i < playerCounter; i++){
                 if(players[i].GetComponent<Health>().dead){
                     deadPlayerCounter+=1;
                 }
         }
-        return playerCounter == deadPlayerCounter;
+        return deadPlayerCounter;
     }
 
     public void ChangeDeadPlayer(){
@@ -58,11 +61,11 @@ public class PlayerManager : MonoBehaviour
     }
     private void FindAvailablePlayer(){
 
-            int playerCounter = players.Length;
+            int playerCounter = getPlayerNumber();
             int nextPlayerIndex = activePlayerIndex;
 
             for(int i = 0 ; i < playerCounter; i++){
-                if( nextPlayerIndex < players.Length - 1 ){
+                if( nextPlayerIndex < getPlayerNumber() - 1 ){
                     nextPlayerIndex +=1 ;
                     
                 }else{
@@ -100,6 +103,15 @@ public class PlayerManager : MonoBehaviour
     }
     public GameObject getPlayerByIndex(int index){
         return players[index];
+    }
+    public GameObject getPlayerByName(string playerName){
+        int playerCounter = getPlayerNumber();
+        for(int i = 0 ; i < playerCounter; i++){
+            if(players[i].GetComponent<PlayerMovement>().name==playerName){
+                return players[i];
+            }
+        }
+        return null;
     }
 
     public string getActivePlayerName(){

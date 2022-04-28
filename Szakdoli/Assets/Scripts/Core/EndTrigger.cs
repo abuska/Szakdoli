@@ -23,11 +23,16 @@ public class EndTrigger : MonoBehaviour{
         }
         foreach( KeyValuePair<string, bool> isPlayerAtGoal in isPlayerAtGoal )
         {
-            if(isPlayerAtGoal.Value==false){
+            if(isPlayerAtGoal.Value==false && (playerManager.getPlayerByName(isPlayerAtGoal.Key)!=null && !playerManager.getPlayerByName(isPlayerAtGoal.Key).GetComponent<Health>().dead)){
                 return;
             }    
         }
-        gameManager.CompleteLevel();  
+        if(playerManager.getDeadPlayerNumber()>0){
+            gameManager.GameOver();
+        }else{
+            gameManager.CompleteLevel();  
+        }
+  
     }
     private void OnTriggerExit2D(Collider2D collision){
         if(collision.tag == "Player"){

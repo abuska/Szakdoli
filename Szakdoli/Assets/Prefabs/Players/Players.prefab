@@ -308,18 +308,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Baleog
       objectReference: {fileID: 0}
-    - target: {fileID: 5816209264925706974, guid: 1e1859cbaac061b449f345e12a4ebf59, type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5816209264925706974, guid: 1e1859cbaac061b449f345e12a4ebf59, type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5816209264925706974, guid: 1e1859cbaac061b449f345e12a4ebf59, type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1e1859cbaac061b449f345e12a4ebf59, type: 3}
 --- !u!1 &6632198734881893716 stripped
