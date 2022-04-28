@@ -9,14 +9,35 @@ public class GameManager : MonoBehaviour
     bool gameHasEnded = false;
     public float restartDelay = 1f;
 
+    private float mainMenuTimer = Mathf.Infinity;
+    private float mainMenuTime = 1f;
+
+    private bool isPause = false;
+
 
 
     private void Update()
     {
-         //TODO game menü
-            if(Input.GetKey(KeyCode.Escape)){
-                SceneManager.LoadScene(0);
+        if(Input.GetKey(KeyCode.Escape) && mainMenuTimer > mainMenuTime ){
+            if(!isPause){
+                PauseGame();
             }
+        }
+        mainMenuTimer +=Time.deltaTime;
+    }
+
+    public void PauseGame(){
+        Time.timeScale = 0;
+        SceneManager.LoadScene(1, LoadSceneMode.Additive);
+        mainMenuTimer = 0;
+        isPause = true;
+    }
+
+    public void ContinueGame(){
+        SceneManager.UnloadSceneAsync(1);
+        Time.timeScale = 1;
+        mainMenuTimer = 0;
+        isPause = false;
     }
 
     public void Restart (){

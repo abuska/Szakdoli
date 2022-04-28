@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Levels/MainMenu.unity
     guid: 544fffc6cbfa56a46874a5b4b411baa0
   - enabled: 1
+    path: Assets/Levels/GameMenu.unity
+    guid: b191183922daabf4cb51d5ea6fe6d703
+  - enabled: 1
     path: Assets/Levels/Password.unity
     guid: 1460ebec887bbbc4e81cdcc043a8cb3b
   - enabled: 1
