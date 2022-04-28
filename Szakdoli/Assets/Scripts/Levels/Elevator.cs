@@ -22,23 +22,35 @@ public class Elevator : MonoBehaviour
     private bool moveEdge1;
     private bool isMove;
 
+    private bool activePlayerInElevator;
+
     private float changeDirectionTimer = Mathf.Infinity;
 
-    void Update()
+    private PlayerManager playerManager;
+
+    private void Awake(){ 
+        playerManager = FindObjectOfType<PlayerManager>();
+    }
+
+    private void Update()
     {
         //TODO ÁTÍRNI HOGY MINDEN IRÁNYBA MŰKÖDJÖN
         if(isPlayerInElevator() && Input.GetKey(KeyCode.E)){
             isMove = true;
         }
         if(isMove){
-            if(Input.GetKey(KeyCode.E) && changeDirectionTimer > 0.5){
+
+            if(Input.GetKey(KeyCode.E) && changeDirectionTimer > 0.5 && isPlayerInElevator()){
                 ChangeDirection();
+                stopMove();
             }
+
             if(moveEdge1){
                 if(elevator.position.y <= edge1.position.y){
                     MoveInDirection(1);
                 }else{
                     ChangeDirection();
+                    stopMove();
                 }
             //ha edge 2 fele megy
             }else{
@@ -46,6 +58,7 @@ public class Elevator : MonoBehaviour
                     MoveInDirection(-1);
                 }else{
                     ChangeDirection();
+                    stopMove();
                 }
             }
         }
@@ -57,8 +70,11 @@ public class Elevator : MonoBehaviour
      //Irányváltás
     private void ChangeDirection(){
             changeDirectionTimer = 0;
-            isMove = false;
             moveEdge1 = !moveEdge1;  
+    }
+
+    private void stopMove(){
+        isMove = false;
     }
 
     //Mozgás
@@ -72,6 +88,7 @@ public class Elevator : MonoBehaviour
         RaycastHit2D raycastHit = Physics2D.BoxCast(elevatorCollider.bounds.center, elevatorCollider.bounds.size, 0, Vector2.down, 0.1f, playerLayer);
         /*Debug.Log(raycastHit.collider.name);
         TODO megcsinálni, hogy csak akkor induljon el ha az aktív player áll rajta és nyomja meg a gombot */
-        return raycastHit.collider != null;
+    
+        return raycastHit.collider != null && raycastHit.collider.name==playerManager.getActivePlayerName();
     }
 }
