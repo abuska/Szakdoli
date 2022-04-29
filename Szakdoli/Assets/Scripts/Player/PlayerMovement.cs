@@ -54,8 +54,8 @@ public class PlayerMovement : MonoBehaviour{
             verticalInput = Input.GetAxis("Vertical");
 
             FlipPlayerImage();
-            
-            if((!isOnWall() /*&& isGrounded()*/)){
+
+            if((!isOnWall() && isGrounded())){
                 Move();
             }
             
@@ -97,7 +97,6 @@ public class PlayerMovement : MonoBehaviour{
 
     private void Jump(){
         //jump height is depend jumpPower and gravityScale
-       
         if(canJump() && (jumpRememberTimer > 0)){
             setGravityScale(gravityScale);
             jumpRememberTimer = 0;
@@ -107,8 +106,7 @@ public class PlayerMovement : MonoBehaviour{
     }
     private void Move(){
       
-            body.velocity = new Vector2(horizontalInput * speed, body.velocity.y);
-        
+        body.velocity = new Vector2(horizontalInput * speed, body.velocity.y);
         //https://www.youtube.com/watch?v=vFsJIrm2btU
         //TODO
 
@@ -160,7 +158,7 @@ public class PlayerMovement : MonoBehaviour{
 
     //Anim conditions
     private bool isWalk(){
-        return horizontalInput !=0;
+        return horizontalInput !=0 /*&& !isOnWall()*/;
     }
     private bool isGrounded(){
         groundRememberTimer += Time.deltaTime;
@@ -176,6 +174,7 @@ public class PlayerMovement : MonoBehaviour{
             }*/
             groundRememberTimer = 0;
         }
+        Debug.Log(hit || groundRememberTimer < groundRememberTime);
         return hit || groundRememberTimer < groundRememberTime;
     }
 

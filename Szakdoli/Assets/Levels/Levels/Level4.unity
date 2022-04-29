@@ -1611,6 +1611,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 384762770}
     m_Modifications:
+    - target: {fileID: 1123627274682124784, guid: 6c5600f561701bd4893fd41bb3ce1db0, type: 3}
+      propertyPath: attackCooldown
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 1123627274682124785, guid: 6c5600f561701bd4893fd41bb3ce1db0, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -1987,6 +1991,10 @@ PrefabInstance:
     - target: {fileID: 1479262418641101462, guid: 60f82c4ca85b48f49971e7942f781572, type: 3}
       propertyPath: m_Name
       value: Ceiling (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1479262418641101462, guid: 60f82c4ca85b48f49971e7942f781572, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 60f82c4ca85b48f49971e7942f781572, type: 3}
@@ -5827,6 +5835,10 @@ PrefabInstance:
     - target: {fileID: 4784897939183913778, guid: 3771718621a87c741a9d3d99887b2149, type: 3}
       propertyPath: m_LocalPosition.y
       value: 27.69
+      objectReference: {fileID: 0}
+    - target: {fileID: 4784897939183913779, guid: 3771718621a87c741a9d3d99887b2149, type: 3}
+      propertyPath: jumpPower
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 4784897939183940813, guid: 3771718621a87c741a9d3d99887b2149, type: 3}
       propertyPath: m_Color.b

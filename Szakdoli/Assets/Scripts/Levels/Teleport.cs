@@ -9,7 +9,7 @@ public class Teleport : MonoBehaviour{
 
    
     private void OnTriggerStay2D(Collider2D collision){
-        if(collision.tag == "Player" && Input.GetKey(KeyCode.E) && teleportTimer>0.5f){
+        if(collision.tag == "Player" && Input.GetKey(KeyCode.E) && teleportTimer>1f){
             collision.transform.position = otherSide.transform.position;
             teleportTimer=0;
         }
