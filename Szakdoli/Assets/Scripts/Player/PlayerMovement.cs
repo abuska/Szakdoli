@@ -65,7 +65,7 @@ public class PlayerMovement : MonoBehaviour{
                 //TODO itt van egy olyan hiba h touchpaddal nem működik
 
                 body.velocity = new Vector2(horizontalInput * runSpeed, body.velocity.y);
-                anim.SetTrigger("run");
+                anim.SetBool("run", true);
                 runTimer = 0;
             }
 
@@ -199,6 +199,9 @@ public class PlayerMovement : MonoBehaviour{
     
     public void setGravityScale(float value){
         body.gravityScale = value;
+    }
+    public void setRunFasle(){
+        anim.SetBool("run", false);
     }
 
     public string getPlayerName(){
