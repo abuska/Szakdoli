@@ -33,7 +33,7 @@ public class PlayerMovement : MonoBehaviour{
     private float runTimer = Mathf.Infinity;
 
     private float shieldUpTime = 0.5f;
-    private float runTime = 1.5f;
+    private float runTime = 3f;
 
     private float OlafShieldUpFallingSpeed = -1f;
 
@@ -60,11 +60,8 @@ public class PlayerMovement : MonoBehaviour{
             }
             
             //TODO kiszervezni a faltörést methbe
-            if(anim.GetBool("walk") == true && playerName=="Erik" && Input.GetMouseButton(0) && runTimer > runTime ){
-
+            if(canRun() && Input.GetMouseButton(0) && runTimer > runTime){
                 //TODO itt van egy olyan hiba h touchpaddal nem működik
-
-                body.velocity = new Vector2(horizontalInput * runSpeed, body.velocity.y);
                 anim.SetBool("run", true);
                 runTimer = 0;
             }
@@ -105,8 +102,14 @@ public class PlayerMovement : MonoBehaviour{
         }
     }
     private void Move(){
-      
-        body.velocity = new Vector2(horizontalInput * speed, body.velocity.y);
+        if(isRun()){
+            body.velocity = new Vector2(horizontalInput * runSpeed, body.velocity.y);
+        }else{
+            body.velocity = new Vector2(horizontalInput * speed, body.velocity.y);
+        }
+        
+
+        
         //https://www.youtube.com/watch?v=vFsJIrm2btU
         //TODO
 
@@ -159,6 +162,12 @@ public class PlayerMovement : MonoBehaviour{
     //Anim conditions
     private bool isWalk(){
         return horizontalInput !=0 /*&& !isOnWall()*/;
+    }
+    private bool canRun(){
+        return anim.GetBool("walk") == true && playerName=="Erik";
+    }
+    private bool isRun(){
+        return anim.GetBool("run");
     }
     private bool isGrounded(){
         groundRememberTimer += Time.deltaTime;

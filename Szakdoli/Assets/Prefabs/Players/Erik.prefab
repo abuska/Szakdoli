@@ -133,6 +133,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   jumpPower: 20
+  runSpeed: 20
   playerName: Erik
   groundLayer:
     serializedVersion: 2
