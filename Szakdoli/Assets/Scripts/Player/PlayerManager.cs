@@ -9,12 +9,16 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
-    [SerializeField] private GameManager gameManager;
+    
     [SerializeField] private GameObject[] players = {};
     private int activePlayerIndex = 0;
     private float changePlayerTimer = Mathf.Infinity;
+    private GameManager gameManager;
 
     private void Awake(){
+
+        gameManager = FindObjectOfType<GameManager>();
+
         ActivatePlayer(0);
     }
 

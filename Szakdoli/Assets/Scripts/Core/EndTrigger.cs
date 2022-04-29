@@ -4,11 +4,15 @@ using System.Collections.Generic;
 
 public class EndTrigger : MonoBehaviour{
 
-    [SerializeField] private PlayerManager playerManager;
-    [SerializeField] private GameManager gameManager;
+    private PlayerManager playerManager;
+    private GameManager gameManager;
     Dictionary<string, bool> isPlayerAtGoal = new Dictionary<string, bool>();
 
     private void Awake(){
+        
+        playerManager = FindObjectOfType<PlayerManager>();
+        gameManager = FindObjectOfType<GameManager>();
+
         for(int i = 0; i<playerManager.getPlayerNumber(); i++){
             isPlayerAtGoal.Add(playerManager.getPlayerByIndex(i).name,false);
         }

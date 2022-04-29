@@ -4,21 +4,25 @@ using UnityEngine;
  
 public class CameraController : MonoBehaviour{
 
+    //Játékos követése távolsággal, megkönnyíti a játékos számára, a pálya áttekintését
+    [SerializeField] private float aheadDistance;
+    [SerializeField] private float cameraSpeed;
     //Szoba kamera nézethez
     [SerializeField] private float speed;  
     private float currentPosX;
     private Vector3 velocity = Vector3.zero;
     //Játékos követése
     private Transform player;
-    [SerializeField] private PlayerManager playerManager;
-    //Játékos követése távolsággal, megkönnyíti a játékos számára, a pálya áttekintését
-    [SerializeField] private float aheadDistance;
-    [SerializeField] private float cameraSpeed;
+    private PlayerManager playerManager;
 
     private float lookAhead;
     //Todo: player létra használata közben is legyen egy kis vertikális követési távolság, a jobb játékélmény miatt
     private float lookVerticalAhead;
 
+    private void Awake()
+    {
+        playerManager = FindObjectOfType<PlayerManager>();
+    }
     private void Update(){
        FollowPlayerCamera();
     }
