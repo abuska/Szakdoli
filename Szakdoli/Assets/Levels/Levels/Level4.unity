@@ -2249,6 +2249,30 @@ PrefabInstance:
       propertyPath: m_SortingLayerID
       value: 1255246925
       objectReference: {fileID: 0}
+    - target: {fileID: 6656376654725008322, guid: 614db98f9004b9a46a77373706f317d3, type: 3}
+      propertyPath: m_Size.x
+      value: 0.9958596
+      objectReference: {fileID: 0}
+    - target: {fileID: 6656376654725008322, guid: 614db98f9004b9a46a77373706f317d3, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6656376654725008322, guid: 614db98f9004b9a46a77373706f317d3, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.08342755
+      objectReference: {fileID: 0}
+    - target: {fileID: 6656376654725008322, guid: 614db98f9004b9a46a77373706f317d3, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6656376654725008323, guid: 614db98f9004b9a46a77373706f317d3, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6656376654725008323, guid: 614db98f9004b9a46a77373706f317d3, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 614db98f9004b9a46a77373706f317d3, type: 3}
 --- !u!4 &1031382999 stripped
