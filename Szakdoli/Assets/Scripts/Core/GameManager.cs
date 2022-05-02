@@ -11,7 +11,9 @@ public class GameManager : MonoBehaviour
     public bool gameHasEnded = false;
     public float restartDelay = 1f;
 
-    public PlayerManager playerManager;
+    private PlayerManager playerManager;
+    private CameraController cameraController;
+    private EndTrigger endTrigger;
 
     private float mainMenuTimer = Mathf.Infinity;
     private float mainMenuTime = 1f;
@@ -19,12 +21,17 @@ public class GameManager : MonoBehaviour
 
     private void Awake(){
         playerManager = FindObjectOfType<PlayerManager>();
+        cameraController = FindObjectOfType<CameraController>();
+        endTrigger = FindObjectOfType<EndTrigger>();
         Time.timeScale = 1;
         isPause = false;
     }
 
     private void Update()
     {
+        cameraController.FollowPlayerCamera();
+        endTrigger.checkAllplayerInGoalOrDie();
+
         if(isGameOver()){
             GameOver();
         }else{
@@ -64,7 +71,7 @@ public class GameManager : MonoBehaviour
       
     }
     private bool isGameOver(){
-        return playerManager.getPlayerNumber() == playerManager.getDeadPlayerNumber();
+        return playerManager.getPlayerCount() == playerManager.getDeadPlayerNumber();
     }
 
     public void GameOver (){

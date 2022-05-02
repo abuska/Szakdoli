@@ -7,24 +7,18 @@ public class CameraController : MonoBehaviour{
     //Játékos követése távolsággal, megkönnyíti a játékos számára, a pálya áttekintését
     [SerializeField] private float aheadDistance;
     [SerializeField] private float cameraSpeed;
-
-    private float currentPosX;
     
     //Játékos követése
     private Transform player;
     private PlayerManager playerManager;
-
     private float lookAhead;
 
-    private void Awake()
-    {
+    private void Awake(){
         playerManager = FindObjectOfType<PlayerManager>();
     }
-    private void Update(){
-       FollowPlayerCamera();
-    }
 
-    private void FollowPlayerCamera(){
+    public void FollowPlayerCamera(){
+
         player = playerManager.getActivePlayerTransform();
 
         transform.position = new Vector3(player.position.x + lookAhead, player.position.y, transform.position.z);

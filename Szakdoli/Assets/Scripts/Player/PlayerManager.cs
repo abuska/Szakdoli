@@ -30,17 +30,14 @@ public class PlayerManager : MonoBehaviour
         
     }
 
-
     public void ChangePlayer(){
         DeactivatePlayer(activePlayerIndex);
         FindAvailablePlayer();
         changePlayerTimer = 0;
     }
 
-    
-
     public int getDeadPlayerNumber(){
-        int playerCounter = getPlayerNumber();
+        int playerCounter = getPlayerCount();
         int deadPlayerCounter = 0;
           for(int i = 0 ; i < playerCounter; i++){
                 if(players[i].GetComponent<Health>().dead){
@@ -57,13 +54,14 @@ public class PlayerManager : MonoBehaviour
             changePlayerTimer = 0;
         }
     }
+
     private void FindAvailablePlayer(){
 
-            int playerCounter = getPlayerNumber();
+            int playerCounter = getPlayerCount();
             int nextPlayerIndex = activePlayerIndex;
 
             for(int i = 0 ; i < playerCounter; i++){
-                if( nextPlayerIndex < getPlayerNumber() - 1 ){
+                if( nextPlayerIndex < getPlayerCount() - 1 ){
                     nextPlayerIndex +=1 ;
                     
                 }else{
@@ -84,6 +82,7 @@ public class PlayerManager : MonoBehaviour
         players[index].GetComponent<PlayerMovement>().enabled = false;
         players[index].GetComponent<PlayerAttack>().enabled = false;
     }
+    
     private void ActivatePlayer(int index){
         players[activePlayerIndex].GetComponent<PlayerMovement>().enabled = true;
         players[activePlayerIndex].GetComponent<PlayerAttack>().enabled = true;
@@ -96,14 +95,21 @@ public class PlayerManager : MonoBehaviour
     public GameObject getActivePlayer(){
         return players[activePlayerIndex];
     }
-    public int getPlayerNumber(){
+    
+    public string getActivePlayerName(){
+        return players[activePlayerIndex].GetComponent<PlayerMovement>().getPlayerName();
+    }
+    
+    public int getPlayerCount(){
         return players.Length;
     }
+    
     public GameObject getPlayerByIndex(int index){
         return players[index];
     }
+    
     public GameObject getPlayerByName(string playerName){
-        int playerCounter = getPlayerNumber();
+        int playerCounter = getPlayerCount();
         for(int i = 0 ; i < playerCounter; i++){
             if(players[i].GetComponent<PlayerMovement>().name==playerName){
                 return players[i];
@@ -112,7 +118,4 @@ public class PlayerManager : MonoBehaviour
         return null;
     }
 
-    public string getActivePlayerName(){
-        return players[activePlayerIndex].GetComponent<PlayerMovement>().getPlayerName();
-    }
 }

@@ -13,17 +13,12 @@ public class EndTrigger : MonoBehaviour{
         playerManager = FindObjectOfType<PlayerManager>();
         gameManager = FindObjectOfType<GameManager>();
 
-        for(int i = 0; i<playerManager.getPlayerNumber(); i++){
+        for(int i = 0; i<playerManager.getPlayerCount(); i++){
             isPlayerAtGoal.Add(playerManager.getPlayerByIndex(i).name,false);
         }
     }
 
-
-
-    private void Update(){
-       checkAllplayerInGoalOrDie();
-    }
-    private void checkAllplayerInGoalOrDie(){
+    public void checkAllplayerInGoalOrDie(){
         foreach( KeyValuePair<string, bool> isPlayerAtGoal in isPlayerAtGoal ){
             if(isPlayerAtGoal.Value==false &&  (
                 playerManager.getPlayerByName(isPlayerAtGoal.Key)!=null && 
