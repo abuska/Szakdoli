@@ -17,8 +17,6 @@ public class MainMenu : MonoBehaviour
     }
     public void RestartLevel(){
         gameManager.Restart();
-        gameManager.ContinueGame();
-
     }
     public void QuitGame(){
         Application.Quit();
@@ -32,9 +30,7 @@ public class MainMenu : MonoBehaviour
     public void goToMainManu(){
         SceneManager.LoadScene(0);
     }
-
     public void goToPassword(){
         SceneManager.LoadScene(2);
-        gameManager.ContinueGame();
     }
 }

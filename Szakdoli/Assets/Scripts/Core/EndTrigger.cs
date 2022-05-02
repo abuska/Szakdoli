@@ -18,12 +18,19 @@ public class EndTrigger : MonoBehaviour{
         }
     }
 
+
+
     private void Update(){
        checkAllplayerInGoalOrDie();
     }
     private void checkAllplayerInGoalOrDie(){
         foreach( KeyValuePair<string, bool> isPlayerAtGoal in isPlayerAtGoal ){
-            if(isPlayerAtGoal.Value==false && (playerManager.getPlayerByName(isPlayerAtGoal.Key)!=null && !playerManager.getPlayerByName(isPlayerAtGoal.Key).GetComponent<Health>().dead)){
+            if(isPlayerAtGoal.Value==false &&  (
+                playerManager.getPlayerByName(isPlayerAtGoal.Key)!=null && 
+                !playerManager.getPlayerByName(isPlayerAtGoal.Key).GetComponent<Health>().dead
+            )){
+                /*ha van olyan karakter aki NINCS a célban ÉS NEM halott,
+                akkor ne vizsgálja tovább, hanem lépjen ki a metódusból*/
                 return;
             }    
         }

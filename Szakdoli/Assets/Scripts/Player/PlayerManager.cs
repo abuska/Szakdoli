@@ -13,25 +13,20 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private GameObject[] players = {};
     private int activePlayerIndex = 0;
     private float changePlayerTimer = Mathf.Infinity;
+    
+
     private GameManager gameManager;
 
     private void Awake(){
-
         gameManager = FindObjectOfType<GameManager>();
-
         ActivatePlayer(0);
     }
 
     void Update(){
-
-        if(isGameOver()){
-            gameManager.GameOver();
-        }else{
-            if(Input.GetKey(KeyCode.LeftControl) && changePlayerTimer > 0.5){
-                ChangePlayer();
-            }
-            changePlayerTimer +=Time.deltaTime;
-        }  
+        if(Input.GetKey(KeyCode.LeftControl) && changePlayerTimer > 0.5){
+            ChangePlayer();
+        }
+        changePlayerTimer +=Time.deltaTime; 
         
     }
 
@@ -41,9 +36,8 @@ public class PlayerManager : MonoBehaviour
         FindAvailablePlayer();
         changePlayerTimer = 0;
     }
-    private bool isGameOver(){
-        return getPlayerNumber() == getDeadPlayerNumber();
-    }
+
+    
 
     public int getDeadPlayerNumber(){
         int playerCounter = getPlayerNumber();

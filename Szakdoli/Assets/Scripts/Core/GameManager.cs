@@ -1,29 +1,40 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] public GameObject completeLevelUI;
-    [SerializeField] public GameObject completeAllLevelUI;
-    [SerializeField] public GameObject gameOverUI;
-    bool gameHasEnded = false;
+    [SerializeField]public GameObject completeLevelUI;
+    [SerializeField]public GameObject completeAllLevelUI;
+    [SerializeField]public GameObject gameOverUI;
+
+    public bool gameHasEnded = false;
     public float restartDelay = 1f;
+
+    public PlayerManager playerManager;
 
     private float mainMenuTimer = Mathf.Infinity;
     private float mainMenuTime = 1f;
+    private bool isPause;
 
-    private bool isPause = false;
-
-
+    private void Awake(){
+        playerManager = FindObjectOfType<PlayerManager>();
+        Time.timeScale = 1;
+        isPause = false;
+    }
 
     private void Update()
     {
-        if(Input.GetKey(KeyCode.Escape) && mainMenuTimer > mainMenuTime ){
-            if(!isPause){
-                PauseGame();
+        if(isGameOver()){
+            GameOver();
+        }else{
+            if(Input.GetKey(KeyCode.Escape) && SceneManager.GetActiveScene().buildIndex != 0 && mainMenuTimer > mainMenuTime ){
+                if(!isPause){
+                    PauseGame();
+                }
             }
+            mainMenuTimer +=Time.deltaTime;
         }
-        mainMenuTimer +=Time.deltaTime;
     }
 
     public void PauseGame(){
@@ -52,6 +63,9 @@ public class GameManager : MonoBehaviour
         }
       
     }
+    private bool isGameOver(){
+        return playerManager.getPlayerNumber() == playerManager.getDeadPlayerNumber();
+    }
 
     public void GameOver (){
         if(gameHasEnded == false){
@@ -60,7 +74,6 @@ public class GameManager : MonoBehaviour
         }
    
     }
-
     public void goToMainMenu(){
          SceneManager.LoadScene(0);
     }
