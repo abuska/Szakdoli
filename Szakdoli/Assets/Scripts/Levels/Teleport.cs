@@ -16,7 +16,7 @@ public class Teleport : MonoBehaviour{
         playerManager = FindObjectOfType<PlayerManager>();
     }
     private void Update(){
-        if(playersInTeleport.Count>0 && playersInTeleport[playerManager.getActivePlayerName()]!=null && Input.GetKey(KeyCode.E) && teleportTimer>1f){
+        if(playersInTeleport.Count > 0 && playersInTeleport.TryGetValue(playerManager.getActivePlayerName(), out GameObject value) && Input.GetKey(KeyCode.E) && teleportTimer>1f){
             foreach( KeyValuePair<string, GameObject> player in playersInTeleport ){
                 player.Value.transform.position = otherSide.transform.position;
             }

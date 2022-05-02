@@ -55,7 +55,10 @@ public class PlayerMovement : MonoBehaviour{
 
             FlipPlayerImage();
 
-            if((!isOnWall() && isGrounded())){
+            if((!isOnWall() && isGrounded()) || 
+                (playerName=="Olaf" && anim.GetBool("isShieldUp") || 
+                (playerName=="Erik" && !isOnWall())) ){
+
                 Move();
             }
             
@@ -167,7 +170,7 @@ public class PlayerMovement : MonoBehaviour{
         return anim.GetBool("walk") == true && playerName=="Erik";
     }
     private bool isRun(){
-        return anim.GetBool("run");
+        return playerName=="Erik" && anim.GetBool("run");
     }
     private bool isGrounded(){
         groundRememberTimer += Time.deltaTime;
@@ -183,7 +186,6 @@ public class PlayerMovement : MonoBehaviour{
             }*/
             groundRememberTimer = 0;
         }
-        Debug.Log(hit || groundRememberTimer < groundRememberTime);
         return hit || groundRememberTimer < groundRememberTime;
     }
 
@@ -210,7 +212,9 @@ public class PlayerMovement : MonoBehaviour{
         body.gravityScale = value;
     }
     public void setRunFasle(){
-        anim.SetBool("run", false);
+        if(playerName=="Erik"){
+            anim.SetBool("run", false);
+        }
     }
 
     public string getPlayerName(){

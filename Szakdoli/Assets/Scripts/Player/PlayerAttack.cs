@@ -32,7 +32,7 @@ public class PlayerAttack : MonoBehaviour{
         coolDownTimer += Time.deltaTime;
     }
 
-    private void Attack(){
+    public void Attack(){
        if(coolDownTimer >= attackCooldown){
                 //Timer beállítása, és a támadás animáció indítása.
                 coolDownTimer = 0;
