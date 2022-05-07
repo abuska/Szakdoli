@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5977997942543183609}
   - component: {fileID: 5977997942543183610}
   - component: {fileID: 5977997942543183611}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: DoorDown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,10 +71,10 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 2091945961
-  m_SortingLayer: 2
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 966e29081aa67b5479d8c399b530872c, type: 3}
-  m_Color: {r: 0.978439, g: 0.53333336, b: 1, a: 1}
+  m_Color: {r: 0.978439, g: 0.53333336, b: 1, a: 0.49019608}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -142,7 +142,7 @@ GameObject:
   - component: {fileID: 5977997943455032342}
   - component: {fileID: 5977997943455032340}
   - component: {fileID: 5977997943455032341}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: DoorUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -201,10 +201,10 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 2091945961
-  m_SortingLayer: 2
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 966e29081aa67b5479d8c399b530872c, type: 3}
-  m_Color: {r: 0.98039216, g: 0.53333336, b: 1, a: 1}
+  m_Color: {r: 0.98039216, g: 0.53333336, b: 1, a: 0.4745098}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

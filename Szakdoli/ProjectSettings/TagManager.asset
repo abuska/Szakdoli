@@ -49,14 +49,14 @@ TagManager:
   - name: Background
     uniqueID: 2599027575
     locked: 0
-  - name: Foreground
-    uniqueID: 2091945961
-    locked: 0
   - name: Player
     uniqueID: 352520071
     locked: 0
   - name: Ground
     uniqueID: 3801367349
+    locked: 0
+  - name: Foreground
+    uniqueID: 2091945961
     locked: 0
   - name: Decors
     uniqueID: 1255246925

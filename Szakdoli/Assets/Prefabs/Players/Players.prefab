@@ -110,8 +110,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 352520071
-  m_SortingLayer: 3
-  m_SortingOrder: 0
+  m_SortingLayer: 2
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 4f7a21f40ece9a744972acf461e5aa22, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -196,7 +196,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed3080d54085b9d458e414eaf7c45451, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 0}
   players:
   - {fileID: 4784897939183940814}
   - {fileID: 6632198734881893716}
@@ -1277,10 +1276,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Olaf
       objectReference: {fileID: 0}
-    - target: {fileID: 7373407542291848415, guid: e70450a01bbd9d84e9979d6881ab6d6b, type: 3}
-      propertyPath: m_SortingOrder
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1050964825088071197, guid: e70450a01bbd9d84e9979d6881ab6d6b, type: 3}
     - {fileID: 1336916635646620207, guid: e70450a01bbd9d84e9979d6881ab6d6b, type: 3}
@@ -1393,10 +1388,6 @@ PrefabInstance:
     - target: {fileID: 3655943676648754246, guid: 39ec090ca031a7e43862f8f026b7d5d1, type: 3}
       propertyPath: startingHealth
       value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 3655943676648813501, guid: 39ec090ca031a7e43862f8f026b7d5d1, type: 3}
-      propertyPath: m_SortingOrder
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3655943676648813502, guid: 39ec090ca031a7e43862f8f026b7d5d1, type: 3}
       propertyPath: m_Name
