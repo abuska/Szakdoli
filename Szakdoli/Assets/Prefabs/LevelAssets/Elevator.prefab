@@ -1,5 +1,62 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &368993894149745165
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4127507763682077933}
+  - component: {fileID: 2013288814070646951}
+  m_Layer: 6
+  m_Name: ElevatorGround
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4127507763682077933
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 368993894149745165}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.091430016, y: -0.010942663, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 881578351823786829}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &2013288814070646951
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 368993894149745165}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -2.7602136}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 18.050001, y: 6.8805213}
+    newSize: {x: 1.42, y: 1.35}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 18.050001, y: 1.3600945}
+  m_EdgeRadius: 0
 --- !u!1 &881578351823786818
 GameObject:
   m_ObjectHideFlags: 0
@@ -11,8 +68,7 @@ GameObject:
   - component: {fileID: 881578351823786829}
   - component: {fileID: 881578351823786831}
   - component: {fileID: 881578351823786828}
-  - component: {fileID: 6326646885597749932}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Elevator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27,9 +83,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 881578351823786818}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.2, y: 19.3, z: 0}
+  m_LocalPosition: {x: 0, y: 19.44, z: 0}
   m_LocalScale: {x: 0.2953125, y: 0.27418, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 4127507763682077933}
   m_Father: {fileID: 881578352762758960}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -110,32 +167,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 18.050001, y: 6.8805213}
   m_EdgeRadius: 0
---- !u!61 &6326646885597749932
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 881578351823786818}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -2.5823522}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 18.050001, y: 6.8805213}
-    newSize: {x: 1.42, y: 1.35}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 18.050001, y: 1.7158177}
-  m_EdgeRadius: 0
 --- !u!1 &881578351838956063
 GameObject:
   m_ObjectHideFlags: 0
@@ -215,6 +246,7 @@ MonoBehaviour:
   edge1: {fileID: 881578351838956062}
   edge2: {fileID: 881578353181299380}
   elevator: {fileID: 881578351823786829}
+  elevatorGround: {fileID: 4127507763682077933}
   elevatorCollider: {fileID: 881578351823786828}
   playerLayer:
     serializedVersion: 2

@@ -49,7 +49,7 @@ public class PlayerMovement : MonoBehaviour{
         boxCollider = GetComponent<BoxCollider2D>();
     }
 
-    private void Update(){
+    private void FixedUpdate(){
             horizontalInput = Input.GetAxis("Horizontal");
             verticalInput = Input.GetAxis("Vertical");
 
@@ -133,6 +133,8 @@ public class PlayerMovement : MonoBehaviour{
     private void Climb(){
         if(onLadder() && Mathf.Abs(verticalInput) > 0 && !anim.GetBool("onLadder")){
             anim.SetBool("onLadder", true);
+            RaycastHit2D ladder = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0, Vector2.down, 0.1f, ladderLayer);
+            Debug.Log(ladder);
             setGravityScale(0);
             body.velocity = new Vector2(body.velocity.x, 0);
         }else if(onLadder() && Mathf.Abs(verticalInput) > 0 && anim.GetBool("onLadder")){

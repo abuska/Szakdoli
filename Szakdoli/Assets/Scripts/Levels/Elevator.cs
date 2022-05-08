@@ -11,7 +11,9 @@ public class Elevator : MonoBehaviour
     //Itt adjuk meg paraméterként, hogy melyik enemy legyen a járőr
     [Header ("Elevator")]
     [SerializeField] private Transform elevator;
-    [SerializeField] private BoxCollider2D elevatorCollider;
+
+    [SerializeField] private Transform elevatorGround;
+    [SerializeField] private BoxCollider2D elevatorCollider; 
     [SerializeField] private LayerMask playerLayer;
 
     //speed: mozgási sebesség, 
@@ -32,7 +34,7 @@ public class Elevator : MonoBehaviour
         playerManager = FindObjectOfType<PlayerManager>();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         //TODO ÁTÍRNI HOGY MINDEN IRÁNYBA MŰKÖDJÖN
         if(isPlayerInElevator() && Input.GetKey(KeyCode.E)){
@@ -82,7 +84,7 @@ public class Elevator : MonoBehaviour
     private void MoveInDirection(int _direction){
         //Elevator mozgatása a megfelelő irányba
         elevator.position = new Vector3(elevator.position.x , elevator.position.y + Time.deltaTime *_direction * speed, elevator.position.z);
-
+        elevatorGround.position = new Vector3(elevator.position.x , elevator.position.y + Time.deltaTime *_direction * speed, elevator.position.z);
     }
     private bool isPlayerInElevator(){
         RaycastHit2D raycastHit = Physics2D.BoxCast(elevatorCollider.bounds.center, elevatorCollider.bounds.size, 0, Vector2.down, 0.1f, playerLayer);
