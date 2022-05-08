@@ -80,7 +80,13 @@ public class PlayerMovement : MonoBehaviour{
                 Climb();
             }
             
+            Debug.Log("playerName:");
+            Debug.Log(isGrounded());
+            Debug.Log(!onLadder());
+            Debug.Log(playerName=="Olaf");
+            Debug.Log(anim.GetBool("isShieldUp"));
             if(!isGrounded() && !onLadder() && playerName=="Olaf" && anim.GetBool("isShieldUp") ){
+                Debug.Log("Olaf is falling");
                 body.velocity = new Vector2(body.velocity.x, OlafShieldUpFallingSpeed);  
             }
             
