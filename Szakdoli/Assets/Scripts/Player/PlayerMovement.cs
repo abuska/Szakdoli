@@ -80,13 +80,7 @@ public class PlayerMovement : MonoBehaviour{
                 Climb();
             }
             
-            Debug.Log("playerName:");
-            Debug.Log(isGrounded());
-            Debug.Log(!onLadder());
-            Debug.Log(playerName=="Olaf");
-            Debug.Log(anim.GetBool("isShieldUp"));
             if(!isGrounded() && !onLadder() && playerName=="Olaf" && anim.GetBool("isShieldUp") ){
-                Debug.Log("Olaf is falling");
                 body.velocity = new Vector2(body.velocity.x, OlafShieldUpFallingSpeed);  
             }
             
@@ -140,7 +134,7 @@ public class PlayerMovement : MonoBehaviour{
         if(onLadder() && Mathf.Abs(verticalInput) > 0 && !anim.GetBool("onLadder")){
             anim.SetBool("onLadder", true);
             RaycastHit2D ladder = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0, Vector2.down, 0.1f, ladderLayer);
-            Debug.Log(ladder);
+        
             setGravityScale(0);
             body.velocity = new Vector2(body.velocity.x, 0);
         }else if(onLadder() && Mathf.Abs(verticalInput) > 0 && anim.GetBool("onLadder")){

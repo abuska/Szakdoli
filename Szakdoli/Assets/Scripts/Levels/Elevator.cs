@@ -5,23 +5,18 @@ using UnityEngine;
 public class Elevator : MonoBehaviour
 {
     [Header ("End Points")]
-    [SerializeField] private Transform edge1; //Felsőpt
-    [SerializeField] private Transform edge2; //Alsópt
+    [SerializeField] private Transform edgeUp; //Felsőpt
+    [SerializeField] private Transform edgeDown; //Alsópt
 
-    //Itt adjuk meg paraméterként, hogy melyik enemy legyen a járőr
     [Header ("Elevator")]
     [SerializeField] private Transform elevator;
-
     [SerializeField] private Transform elevatorGround;
     [SerializeField] private BoxCollider2D elevatorCollider; 
     [SerializeField] private LayerMask playerLayer;
 
-    //speed: mozgási sebesség, 
-    //initScale: ez tárolja hogy éppen merre "néz" a karakter, 
-    //moveLeft: ez alapján mozog a kaater jobbra vagy balra
     [Header ("Movement parameters")]
     [SerializeField] private float speed;
-    private bool moveEdge1;
+    private bool moveUp;
     private bool isMove;
 
     private bool activePlayerInElevator;
@@ -36,27 +31,26 @@ public class Elevator : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //TODO ÁTÍRNI HOGY MINDEN IRÁNYBA MŰKÖDJÖN
         if(isPlayerInElevator() && Input.GetKey(KeyCode.E)){
             isMove = true;
         }
         if(isMove){
-
+            Debug.Log("IsMove");
             if(Input.GetKey(KeyCode.E) && changeDirectionTimer > 0.5 && isPlayerInElevator()){
                 ChangeDirection();
                 stopMove();
             }
 
-            if(moveEdge1){
-                if(elevator.position.y <= edge1.position.y){
+            if(moveUp){
+                if(elevator.position.y <= edgeUp.position.y){
                     MoveInDirection(1);
                 }else{
                     ChangeDirection();
                     stopMove();
                 }
-            //ha edge 2 fele megy
+            //ha lefelé megy
             }else{
-                if(elevator.position.y >= edge2.position.y){
+                if(elevator.position.y >= edgeDown.position.y){
                     MoveInDirection(-1);
                 }else{
                     ChangeDirection();
@@ -69,10 +63,10 @@ public class Elevator : MonoBehaviour
        
 
     }
-     //Irányváltás
+    //Irányváltás
     private void ChangeDirection(){
             changeDirectionTimer = 0;
-            moveEdge1 = !moveEdge1;  
+            moveUp = !moveUp;  
     }
 
     private void stopMove(){
@@ -80,15 +74,29 @@ public class Elevator : MonoBehaviour
     }
 
     //Mozgás
-    //TODO Meg kellene csinálni, hogy ne olyan szaggatottan mozogjon
     private void MoveInDirection(int _direction){
         //Elevator mozgatása a megfelelő irányba
         elevator.position = new Vector3(elevator.position.x , elevator.position.y + Time.deltaTime *_direction * speed, elevator.position.z);
         elevatorGround.position = new Vector3(elevator.position.x , elevator.position.y + Time.deltaTime *_direction * speed, elevator.position.z);
     }
     private bool isPlayerInElevator(){
-        RaycastHit2D raycastHit = Physics2D.BoxCast(elevatorCollider.bounds.center, elevatorCollider.bounds.size, 0, Vector2.down, 0.1f, playerLayer);
-    
-        return raycastHit.collider != null && raycastHit.collider.name==playerManager.getActivePlayerName();
+        //visszaadja az összes elemet ami ütközik a elevator colliderével, a playerLayer paraméter miatt szűkítve adja vissza a playerekre
+        RaycastHit2D[] raycastHit = Physics2D.RaycastAll( 
+            new Vector2(elevatorCollider.bounds.center.x-elevatorCollider.bounds.size.x/2, elevatorCollider.bounds.center.y-elevatorCollider.bounds.size.y/2),
+            new Vector2(elevatorCollider.bounds.size.x, elevatorCollider.bounds.size.y),
+            elevatorCollider.bounds.size.x, 
+            playerLayer
+        );
+        bool isActivePlayerInElevator = false;
+        for(int i=0;i<raycastHit.Length;i++){
+            Debug.Log(raycastHit[i].collider.name);
+            //ellenőrzi, hogy az aktív charakter is a liften található-e 
+            if(raycastHit[i].collider.name==playerManager.getActivePlayerName()){
+                isActivePlayerInElevator=true;
+                break;
+            }
+        }
+        //akkor tér vissza igazzal, ha az aktív player a liften tartózkodik.
+        return isActivePlayerInElevator;
     }
 }

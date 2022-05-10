@@ -44,7 +44,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -2.7602136}
+  m_Offset: {x: 0, y: -2.4817705}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -55,7 +55,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 18.050001, y: 1.3600945}
+  m_Size: {x: 18.050001, y: 1.9169806}
   m_EdgeRadius: 0
 --- !u!1 &881578351823786818
 GameObject:
@@ -154,7 +154,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.020963669, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -165,7 +165,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 18.050001, y: 6.8805213}
+  m_Size: {x: 18.09193, y: 6.8805213}
   m_EdgeRadius: 0
 --- !u!1 &881578351838956063
 GameObject:
@@ -177,7 +177,7 @@ GameObject:
   m_Component:
   - component: {fileID: 881578351838956062}
   m_Layer: 0
-  m_Name: Edge1
+  m_Name: EdgeUp
   m_TagString: Untagged
   m_Icon: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -243,8 +243,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 939838c9c88e88a46856a55b5e121ea3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  edge1: {fileID: 881578351838956062}
-  edge2: {fileID: 881578353181299380}
+  edgeUp: {fileID: 881578351838956062}
+  edgeDown: {fileID: 881578353181299380}
   elevator: {fileID: 881578351823786829}
   elevatorGround: {fileID: 4127507763682077933}
   elevatorCollider: {fileID: 881578351823786828}
@@ -262,7 +262,7 @@ GameObject:
   m_Component:
   - component: {fileID: 881578353181299380}
   m_Layer: 0
-  m_Name: Edge2
+  m_Name: EdgeDow
   m_TagString: Untagged
   m_Icon: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
