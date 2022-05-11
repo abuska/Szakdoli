@@ -1208,7 +1208,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Control
+  m_Text: "Ir\xE1ny\xEDt\xE1s"
 --- !u!222 &1215442136
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1287,7 +1287,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Exit
+  m_Text: "Kil\xE9p\xE9s"
 --- !u!222 &1297840008
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1366,9 +1366,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Password
-
-'
+  m_Text: "Jelsz\xF3"
 --- !u!222 &1321396616
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1447,7 +1445,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Game menu
+  m_Text: "F\u0151 men\xFC"
 --- !u!222 &1353740024
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1526,7 +1524,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Start
+  m_Text: "\xDAj j\xE1t\xE9k"
 --- !u!222 &1770536004
 CanvasRenderer:
   m_ObjectHideFlags: 0

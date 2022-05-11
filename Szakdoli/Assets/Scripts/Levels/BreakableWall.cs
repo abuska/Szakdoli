@@ -12,7 +12,11 @@ public class BreakableWall : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D collision){
-        if(collision.tag == "Player" && collision.GetComponent<Animator>().GetBool("run") == true){
+        if(collision.tag == "Player"
+        && collision.GetComponent<Animator>()
+        && collision.GetComponent<Animator>().GetBool("run") != null 
+        && collision.GetComponent<Animator>().GetBool("run") == true
+        ){
             anim.SetTrigger("break");
         }
     }

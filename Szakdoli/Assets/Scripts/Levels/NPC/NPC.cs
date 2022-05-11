@@ -8,6 +8,7 @@ public class NPC : MonoBehaviour
     [SerializeField] private bool showInfoInTrigger;
     private bool isPlayerInCollider;
     
+    
 
     private void Update(){
         if(isPlayerInCollider){

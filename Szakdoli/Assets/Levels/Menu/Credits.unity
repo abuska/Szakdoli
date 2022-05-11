@@ -752,7 +752,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Back to Main Menu
+  m_Text: "Vissza a f\u0151men\xFCbe"
 --- !u!222 &1297840008
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -914,7 +914,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Created by:\nCsabai Abig\xE9l"
+  m_Text: "K\xE9sz\xEDtette:\nCsabai Abig\xE9l"
 --- !u!222 &1990514855
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -993,7 +993,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Thanks for playing
+  m_Text: "K\xF6sz\xF6n\xF6m, hogy j\xE1tszott\xE1l!"
 --- !u!222 &2042469692
 CanvasRenderer:
   m_ObjectHideFlags: 0

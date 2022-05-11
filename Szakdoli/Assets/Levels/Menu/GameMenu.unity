@@ -891,7 +891,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Continue
+  m_Text: "Folytat\xE1s"
 --- !u!222 &1101153374
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1103,7 +1103,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Back To Main Manu
+  m_Text: "Vissza a f\u0151men\xFCbe"
 --- !u!222 &1297840008
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1182,9 +1182,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Password
-
-'
+  m_Text: "Jelsz\xF3\n"
 --- !u!222 &1321396616
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1263,7 +1261,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Game menu
+  m_Text: "J\xE1t\xE9k men\xFC"
 --- !u!222 &1353740024
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1342,7 +1340,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Restart Level
+  m_Text: "Szint \xFAjrakezd\xE9se"
 --- !u!222 &1770536004
 CanvasRenderer:
   m_ObjectHideFlags: 0
