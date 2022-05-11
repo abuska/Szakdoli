@@ -16,27 +16,40 @@ public class Teleport : MonoBehaviour{
         playerManager = FindObjectOfType<PlayerManager>();
     }
     private void Update(){
-        if(playersInTeleport.Count > 0 && playersInTeleport.TryGetValue(playerManager.getActivePlayerName(), out GameObject value) && Input.GetKey(KeyCode.E) && teleportTimer>1f){
+        moveAllCharacterInTeleport();
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision){
+        if(collision.tag == "Player"){
+            addPlayerInTeleport(collision.name);
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision){
+        if(collision.tag == "Player"){
+           removePlayerInTeleport(collision.name);
+        }
+    }
+
+    private void moveAllCharacterInTeleport(){
+        if(playersInTeleport.Count > 0 
+            && playersInTeleport.TryGetValue(playerManager.getActivePlayerName(), out GameObject value) 
+            && Input.GetKey(KeyCode.E) 
+            && teleportTimer>1f
+        ){
             foreach( KeyValuePair<string, GameObject> player in playersInTeleport ){
                 player.Value.transform.position = otherSide.transform.position;
             }
             
             teleportTimer=0;
         }
+
         teleportTimer+=Time.deltaTime;
     }
-
-    private void OnTriggerEnter2D(Collider2D collision){
-        if(collision.tag == "Player"){
-            string playerName = collision.name;
-            playersInTeleport.Add(playerName, playerManager.getPlayerByName(collision.name));
-           
-        }
+    private void addPlayerInTeleport(string playerName) {
+        playersInTeleport.Add(playerName, playerManager.getPlayerByName(playerName));
     }
-    private void OnTriggerExit2D(Collider2D collision){
-        if(collision.tag == "Player"){
-            string playerName = collision.name;
-            playersInTeleport.Remove(playerName);
-        }
+
+    private void removePlayerInTeleport(string playerName){
+        playersInTeleport.Remove(playerName);
     }
 }

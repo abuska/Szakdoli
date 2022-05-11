@@ -13,11 +13,12 @@ public class Password : MonoBehaviour
     Dictionary<string, string> levelPassword = new Dictionary<string, string>();
 
     private void createLevelDictionary(){
-        levelPassword.Add("aaaa","Level1");
-        levelPassword.Add("bbbb","Level2");
-        levelPassword.Add("cccc","Level3");
-        levelPassword.Add("dddd","Level4");
-        levelPassword.Add("eeee","Level5");
+        levelPassword.Add("TREL","Level1");
+        levelPassword.Add("ZVVE","Level2");
+        levelPassword.Add("QKDY","Level3");
+        levelPassword.Add("CEDL","Level4");
+        levelPassword.Add("SKYQ","Level5");
+        levelPassword.Add("AIXY","Level6");
     }
 
     private void Start(){
@@ -47,8 +48,9 @@ public class Password : MonoBehaviour
     }
         
     public void checkPassword(){
-        if(levelPassword.TryGetValue(input.text, out string value)){
-            SceneManager.LoadScene(levelPassword[input.text]);
+        string str = input.text.ToUpper();
+        if(levelPassword.TryGetValue(str, out string value)){
+            SceneManager.LoadScene(levelPassword[str]);
         }else{
            warningText.enabled = true;
         }

@@ -29,7 +29,7 @@ public class Elevator : MonoBehaviour
         playerManager = FindObjectOfType<PlayerManager>();
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         if(isPlayerInElevator() && Input.GetKey(KeyCode.E)){
             isMove = true;

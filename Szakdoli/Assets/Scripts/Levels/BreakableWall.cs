@@ -17,8 +17,12 @@ public class BreakableWall : MonoBehaviour
         && collision.GetComponent<Animator>().GetBool("run") != null 
         && collision.GetComponent<Animator>().GetBool("run") == true
         ){
-            anim.SetTrigger("break");
+           setAnimationTrigger();
         }
+    }
+
+    private void setAnimationTrigger(){
+        anim.SetTrigger("break");
     }
 
     private void Deactivate(){

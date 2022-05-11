@@ -25,14 +25,12 @@ public class DoorWithKey : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision){
         if(collision.tag == "Player" && isPlayerHasKey){
-            anim.SetBool("isOpen", true);
-            doorCollider.enabled = false;
+            openDoor();
         }
     }
     private void OnTriggerExit2D(Collider2D collision){
         if(collision.tag == "Player" && isPlayerHasKey){
-            anim.SetBool("isOpen", false);
-            doorCollider.enabled = true;
+            closeDoor();
         }
     }
 
@@ -40,9 +38,22 @@ public class DoorWithKey : MonoBehaviour
     private void checkKey(){
         RaycastHit2D raycastHitPlayer = Physics2D.BoxCast(key.GetComponent<BoxCollider2D>().bounds.center, key.GetComponent<BoxCollider2D>().bounds.size, 0, Vector2.left, 0, playerLayer);
         if(raycastHitPlayer.collider != null && Input.GetKey(KeyCode.E)){
-            isPlayerHasKey = true;
-            key.SetActive(false);
+            collectKey();
         }
     }
 
+    private void collectKey(){
+        isPlayerHasKey = true;
+        key.SetActive(false);
+    }
+
+    private void openDoor(){
+        anim.SetBool("isOpen", true);
+        doorCollider.enabled = false;
+    }
+    
+    private void closeDoor(){
+        anim.SetBool("isOpen", false);
+        doorCollider.enabled = true;
+    }
 }
