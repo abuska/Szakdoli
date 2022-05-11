@@ -35,7 +35,6 @@ public class Elevator : MonoBehaviour
             isMove = true;
         }
         if(isMove){
-            Debug.Log("IsMove");
             if(Input.GetKey(KeyCode.E) && changeDirectionTimer > 0.5 && isPlayerInElevator()){
                 ChangeDirection();
                 stopMove();
@@ -76,20 +75,34 @@ public class Elevator : MonoBehaviour
     //Mozgás
     private void MoveInDirection(int _direction){
         //Elevator mozgatása a megfelelő irányba
-        elevator.position = new Vector3(elevator.position.x , elevator.position.y + Time.deltaTime *_direction * speed, elevator.position.z);
-        elevatorGround.position = new Vector3(elevator.position.x , elevator.position.y + Time.deltaTime *_direction * speed, elevator.position.z);
+        elevator.position = new Vector3(
+            elevator.position.x , 
+            elevator.position.y + Time.deltaTime *_direction * speed, 
+            elevator.position.z
+        );
+        elevatorGround.position = new Vector3(
+            elevator.position.x , 
+            elevator.position.y + Time.deltaTime *_direction * speed, 
+            elevator.position.z
+        );
     }
     private bool isPlayerInElevator(){
         //visszaadja az összes elemet ami ütközik a elevator colliderével, a playerLayer paraméter miatt szűkítve adja vissza a playerekre
         RaycastHit2D[] raycastHit = Physics2D.RaycastAll( 
-            new Vector2(elevatorCollider.bounds.center.x-elevatorCollider.bounds.size.x/2, elevatorCollider.bounds.center.y-elevatorCollider.bounds.size.y/2),
-            new Vector2(elevatorCollider.bounds.size.x, elevatorCollider.bounds.size.y),
+            new Vector2(
+                elevatorCollider.bounds.center.x-elevatorCollider.bounds.size.x/2, 
+                elevatorCollider.bounds.center.y-elevatorCollider.bounds.size.y/2
+            ),
+            new Vector2(
+                elevatorCollider.bounds.size.x, 
+                elevatorCollider.bounds.size.y
+            ),
             elevatorCollider.bounds.size.x, 
             playerLayer
         );
+        //Aktív player keresése a colliderek között
         bool isActivePlayerInElevator = false;
-        for(int i=0;i<raycastHit.Length;i++){
-            Debug.Log(raycastHit[i].collider.name);
+        for(int i = 0; i < raycastHit.Length; i++){
             //ellenőrzi, hogy az aktív charakter is a liften található-e 
             if(raycastHit[i].collider.name==playerManager.getActivePlayerName()){
                 isActivePlayerInElevator=true;

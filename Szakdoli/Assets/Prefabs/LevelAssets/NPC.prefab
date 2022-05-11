@@ -83,7 +83,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 2091945961
-  m_SortingLayer: 2
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: db2d393abc4f82f448acbbbf2aef5cf7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -193,7 +193,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8906423191073622817}
   - component: {fileID: 8906423191073622819}
-  - component: {fileID: 8906423191073622816}
+  - component: {fileID: 8108017492888984081}
   m_Layer: 0
   m_Name: NPC
   m_TagString: Untagged
@@ -243,7 +243,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.880599, y: 1.8734794}
   m_EdgeRadius: 0
---- !u!114 &8906423191073622816
+--- !u!114 &8108017492888984081
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -252,8 +252,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 8906423191073622830}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2deb7cf1e23bd69408542dcf7365119c, type: 3}
+  m_Script: {fileID: 11500000, guid: f3742e7889abe9c47980e1d3af204cd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  infoText: {fileID: 8906423190415683507}
+  infoText: {fileID: 0}
   showInfoInTrigger: 0
