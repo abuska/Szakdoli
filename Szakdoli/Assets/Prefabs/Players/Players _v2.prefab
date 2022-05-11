@@ -399,7 +399,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25eee35d6e48bdc4484895215030eb47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 4
+  startingHealth: 3
   iFramesDuration: 2
   numberOfFlashes: 3
 --- !u!1 &3169026079730428623
@@ -658,7 +658,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25eee35d6e48bdc4484895215030eb47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 5
+  startingHealth: 3
   iFramesDuration: 2
   numberOfFlashes: 3
 --- !u!1 &3861756018059342677

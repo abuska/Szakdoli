@@ -58,7 +58,7 @@ public class GameManager : MonoBehaviour
         isPause = false;
     }
 
-    public void Restart (){
+    public void Restart(){
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 

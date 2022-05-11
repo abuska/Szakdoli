@@ -38,60 +38,88 @@ public class Health : MonoBehaviour{
     //Sebzés
     public void TakeDamage(float _demage){
         currentHealth = Mathf.Clamp(currentHealth - _demage, 0, startingHealth);
-        //ha a karekter nem hal meg a sebzéstől elindul a sérülés animáció, illetve elindul az iFrame működése
-        if(currentHealth>0){
+       
+        if( currentHealth > 0 ){
+
+            //ha a karekter nem hal meg a sebzéstől elindul a sérülés animáció, 
+            //illetve elindul az iFrame működése
+
             anim.SetTrigger("hurt");
-            if(GetComponent<PlayerMovement>().getPlayerName()=="Olaf" && anim.GetBool("isShieldUp")!=null && anim.GetBool("isShieldUp")==true){
-                GetComponent<PlayerMovement>().SetShield();
-            }
-            if(GetComponent<PlayerMovement>().getPlayerName()=="Baleog"){
-                GetComponent<PlayerAttack>().Attack();
-            }
+            
+            handleOlafDamage();
+            handleBaleogDamage();
+            
             StartCoroutine(Invonerability());
-        //Abban az esetben ha a karakternek már nincs elég életereje.
-        }else{
-            //csak abban az esetben ha a karakter még nem halt meg
-            if(!dead){
-                //elindul a halál animáció
-                anim.SetTrigger("die");
 
-                //És letiltjuk a mozgatását
-                //Ha a karakter player
-                if(GetComponent<PlayerMovement>() != null){
-                    GetComponent<PlayerMovement>().enabled = false;
-                    gameObject.SetActive(false);
-                    if(GetComponentInParent<PlayerManager>().getActivePlayer() == gameObject){
-                        GetComponentInParent<PlayerManager>().ChangePlayer();
-                    }    
-                }
-                //Ha a karakter járőr
-                if(GetComponentInParent<EnemyPatrol>() != null){
-                    GetComponentInParent<EnemyPatrol>().enabled = false;
-                    gameObject.SetActive(false);
-                }
-                //Ha a karakter közel harcos
-                if(GetComponent<MeleeEnemy>() != null){
-                    GetComponent<MeleeEnemy>().enabled = false;
-                    gameObject.SetActive(false);
-                }
-                if(GetComponent<RangedEnemy>() != null){
-                    GetComponent<RangedEnemy>().enabled = false;
-                    gameObject.SetActive(false);
-                }
-                if(GetComponent<ArrowTrap>() != null){
-                    GetComponent<ArrowTrap>().enabled = false;
-                    gameObject.SetActive(false);
-                }
+        
+        }else if(!dead){
 
-                dead = true;
-            }
-          
+            //Abban az esetben ha a karakternek már nincs elég életereje.
+            //és csak abban az esetben ha a karakter még nem halt meg
+            //elindul a halál animáció
+            anim.SetTrigger("die");
+
+            handleDie();
+
+            dead = true;
+            
+        }
+    }
+
+
+    private void handleDie(){
+        //Letiltjuk a mozgatását, ha a karakter player
+        if(GetComponent<PlayerMovement>() != null){
+            GetComponent<PlayerMovement>().enabled = false;
+            //deaktiváljuk a karaktert
+            gameObject.SetActive(false);
+            //Ha az aktív karakter halt meg karaktert vált.
+            if(GetComponentInParent<PlayerManager>().getActivePlayer() == gameObject){
+                GetComponentInParent<PlayerManager>().ChangePlayer();
+            }    
+        }
+        //Ha a karakter járőr
+        if(GetComponentInParent<EnemyPatrol>() != null){
+            GetComponentInParent<EnemyPatrol>().enabled = false;
+            gameObject.SetActive(false);
+        }
+        //Ha a karakter közel harcos
+        if(GetComponent<MeleeEnemy>() != null){
+            GetComponent<MeleeEnemy>().enabled = false;
+            gameObject.SetActive(false);
+        }
+        //Ha a karaker távolsági harcos
+        if(GetComponent<RangedEnemy>() != null){
+            GetComponent<RangedEnemy>().enabled = false;
+            gameObject.SetActive(false);
+        }
+    }
+     
+    private void handleOlafDamage(){
+        //Ha Olaf pajzsa fel van emelve és megsérül huzza vissza maga elé
+        if(GetComponent<PlayerMovement>().getPlayerName()=="Olaf" 
+            && anim.GetBool("isShieldUp")!=null 
+            && anim.GetBool("isShieldUp")==true
+        ){
+            GetComponent<PlayerMovement>().SetShield();
+        }
+    }
+
+    private void handleBaleogDamage(){
+        //Ha Baleogot sebzés éri, csapjon vissza egyet a kardjával
+        if(GetComponent<PlayerMovement>().getPlayerName()=="Baleog"){
+            GetComponent<PlayerAttack>().Attack();
         }
     }
 
     //Health növelése, pl felszedhető életerő pontokkal
     public void AddHelath(float _value){
         currentHealth = Mathf.Clamp(currentHealth + _value, 0, startingHealth);
+    }
+
+    public void IncreaseHelath(float _value){
+        startingHealth =  Mathf.Clamp(startingHealth + _value, 0, 10);
+        currentHealth = Mathf.Clamp(currentHealth + _value, 0, 10);
     }
 
     //A sérülés után a sebezhetetlenségért felelős fv.
