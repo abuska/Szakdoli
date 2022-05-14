@@ -26,7 +26,7 @@ public class Teleport : MonoBehaviour{
     }
     private void OnTriggerExit2D(Collider2D collision){
         if(collision.tag == "Player"){
-           removePlayerInTeleport(collision.name);
+           removePlayerInTeleportList(collision.name);
         }
     }
 
@@ -49,7 +49,7 @@ public class Teleport : MonoBehaviour{
         playersInTeleport.Add(playerName, playerManager.getPlayerByName(playerName));
     }
 
-    private void removePlayerInTeleport(string playerName){
+    private void removePlayerInTeleportList(string playerName){
         playersInTeleport.Remove(playerName);
     }
 }

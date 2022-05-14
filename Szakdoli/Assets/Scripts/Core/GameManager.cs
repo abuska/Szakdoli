@@ -30,18 +30,15 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         cameraController.FollowPlayerCamera();
+        
         endTrigger.checkAllplayerInGoalOrDie();
 
-        if(isGameOver()){
-            GameOver();
-        }else{
-            if(Input.GetKey(KeyCode.Escape) && SceneManager.GetActiveScene().buildIndex != 0 && mainMenuTimer > mainMenuTime ){
-                if(!isPause){
-                    PauseGame();
-                }
+        if(Input.GetKey(KeyCode.Escape) && SceneManager.GetActiveScene().buildIndex != 0 && mainMenuTimer > mainMenuTime ){
+            if(!isPause){
+                PauseGame();
             }
-            mainMenuTimer +=Time.deltaTime;
         }
+        mainMenuTimer +=Time.deltaTime;
     }
 
     public void PauseGame(){
@@ -69,9 +66,6 @@ public class GameManager : MonoBehaviour
             completeLevelUI.SetActive(true);
         }
       
-    }
-    private bool isGameOver(){
-        return playerManager.getPlayerCount() == playerManager.getDeadPlayerNumber();
     }
 
     public void GameOver (){

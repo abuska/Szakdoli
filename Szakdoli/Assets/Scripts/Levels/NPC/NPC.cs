@@ -11,17 +11,21 @@ public class NPC : MonoBehaviour
     private void OnTriggerStay2D(Collider2D collision){
         if(collision.tag == "Player" && !isPlayerAlreadySeenMessage){
             if(( showInfoInTrigger || Input.GetKey(KeyCode.E))){
-                infoText.SetActive(true);
+                setNpcTextVisibility(true);
             }
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision){
         if(collision.tag == "Player" && !isPlayerAlreadySeenMessage){
-            infoText.SetActive(false);
+            setNpcTextVisibility(false);
             isPlayerAlreadySeenMessage = true;
         }
         
+    }
+
+    private void setNpcTextVisibility(bool visibility){
+        infoText.SetActive(visibility);
     }
 
 

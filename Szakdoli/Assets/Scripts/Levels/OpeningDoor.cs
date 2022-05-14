@@ -15,14 +15,23 @@ public class OpeningDoor : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision){
         if(collision.tag == "Player"){
-            anim.SetBool("isOpen", true);
-            body.bodyType = RigidbodyType2D.Kinematic;
+           OpenDoor();
         }
     }
+
     private void OnTriggerExit2D(Collider2D collision){
         if(collision.tag == "Player"){
-            anim.SetBool("isOpen", false);
-            body.bodyType = RigidbodyType2D.Dynamic;
+            closeDoor();
         }
+    }
+
+    private void OpenDoor(){
+        anim.SetBool("isOpen", true);
+        body.bodyType = RigidbodyType2D.Kinematic;
+    }
+
+    private void closeDoor(){
+        anim.SetBool("isOpen", false);
+        body.bodyType = RigidbodyType2D.Dynamic;
     }
 }

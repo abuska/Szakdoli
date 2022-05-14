@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1394644373619055542}
   - component: {fileID: 1394644373619055543}
   - component: {fileID: 1394644373619055544}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: AntigravityElevator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,7 +71,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 2091945961
-  m_SortingLayer: 2
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 306745d3110747443b3d84e9f5205ae3, type: 3}
   m_Color: {r: 0.3915094, g: 0.5662064, b: 1, a: 1}

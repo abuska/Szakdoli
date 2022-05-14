@@ -46,4 +46,5 @@ MonoBehaviour:
   completeLevelUI: {fileID: 0}
   completeAllLevelUI: {fileID: 0}
   gameOverUI: {fileID: 0}
-  restartDelay: 1
+  gameHasEnded: 0
+  restartDelay: 5

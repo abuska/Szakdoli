@@ -52,10 +52,10 @@ public class RangedEnemy : MonoBehaviour
     }
     private void rangedAttack(){
        
-        fireballs[FindFireball()].transform.position = firePoint.position;
-        fireballs[FindFireball()].GetComponent<EnemyProjectile>().ActivateProjectile();
+        fireballs[FindProjectile()].transform.position = firePoint.position;
+        fireballs[FindProjectile()].GetComponent<EnemyProjectile>().ActivateProjectile();
     }
-    private int FindFireball(){
+    private int FindProjectile(){
         for(int i = 0; i < fireballs.Length; i++ ){
             if(!fireballs[i].activeInHierarchy){
                 return i;

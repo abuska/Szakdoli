@@ -12,6 +12,7 @@ public class ArrowTrap : MonoBehaviour
         arrows[FindArrows()].transform.position = firePoint.position;
         arrows[FindArrows()].GetComponent<EnemyProjectile>().ActivateProjectile();
     }
+    
     private int FindArrows(){
         for(int i = 0; i < arrows.Length; i++){
             if(!arrows[i].activeInHierarchy){

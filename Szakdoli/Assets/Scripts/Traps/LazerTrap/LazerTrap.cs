@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class LazerTrap : MonoBehaviour
 {
-    //TODO HEADEREK
     [SerializeField] private GameObject button;
     [SerializeField] private GameObject[] traps;
     [SerializeField] private Rigidbody2D body;
@@ -41,9 +40,9 @@ public class LazerTrap : MonoBehaviour
     }
     private void Button(){
         RaycastHit2D raycastHitPlayer = Physics2D.BoxCast(button.GetComponent<BoxCollider2D>().bounds.center, button.GetComponent<BoxCollider2D>().bounds.size, 0, Vector2.left, 0, playerLayer);
-        RaycastHit2D raycastHitFireball = Physics2D.BoxCast(button.GetComponent<BoxCollider2D>().bounds.center, button.GetComponent<BoxCollider2D>().bounds.size, 0, Vector2.left, 0, fireballLayer);
+        RaycastHit2D raycastHitProjectile = Physics2D.BoxCast(button.GetComponent<BoxCollider2D>().bounds.center, button.GetComponent<BoxCollider2D>().bounds.size, 0, Vector2.left, 0, fireballLayer);
 
-        if(raycastHitPlayer.collider != null && Input.GetKey(KeyCode.E) || raycastHitFireball.collider != null){
+        if(raycastHitPlayer.collider != null && Input.GetKey(KeyCode.E) || raycastHitProjectile.collider != null){
                button.GetComponent<Animator>().SetBool("turnOff",true);
                button.GetComponent<Collider2D>().enabled = false;
                TurnOffTraps();

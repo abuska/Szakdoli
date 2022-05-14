@@ -52,11 +52,11 @@ public class PlayerAttack : MonoBehaviour{
         anim.SetTrigger("fire");
         coolDownTimer = 0;
 
-        fireballs[FindFireball()].transform.position = firePoint.position;
-        fireballs[FindFireball()].GetComponent<Projectile>().SetDirection(Mathf.Sign(transform.localScale.x));
+        fireballs[FindProjectile()].transform.position = firePoint.position;
+        fireballs[FindProjectile()].GetComponent<Projectile>().SetDirection(Mathf.Sign(transform.localScale.x));
     }
 
-    private int FindFireball(){
+    private int FindProjectile(){
         for(int i = 0; i < fireballs.Length; i++ ){
             if(!fireballs[i].activeInHierarchy){
                 return i;

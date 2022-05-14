@@ -10,15 +10,18 @@ public class HelpBox : MonoBehaviour
        private void OnTriggerStay2D(Collider2D collision){
         if(collision.tag == "Player"){
             if(( showInfoInTrigger || Input.GetKey(KeyCode.E))){
-                infoText.SetActive(true);
+                setInfoTextVisibility(true);
             }
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision){
         if(collision.tag == "Player"){
-            infoText.SetActive(false);
+            setInfoTextVisibility(false);
         }
-        
+    }
+
+    private void setInfoTextVisibility(bool visibility){
+        infoText.SetActive(visibility);
     }
 }

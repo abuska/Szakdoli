@@ -19,6 +19,7 @@ public class EndTrigger : MonoBehaviour{
     }
 
     public void checkAllplayerInGoalOrDie(){
+
         foreach( KeyValuePair<string, bool> isPlayerAtGoal in isPlayerAtGoal ){
             if(isPlayerAtGoal.Value==false &&  (
                 playerManager.getPlayerByName(isPlayerAtGoal.Key)!=null && 
@@ -29,24 +30,33 @@ public class EndTrigger : MonoBehaviour{
                 return;
             }    
         }
-        if(playerManager.getDeadPlayerNumber()>0){
+
+        if(playerManager.getDeadPlayerNumber() > 0 || playerManager.getPlayerCount() == playerManager.getDeadPlayerNumber()){
+            //Ha minden élő játékos a célba van de, van legalább egy halott
             gameManager.GameOver();
         }else{
+            //Ha minden élő játékos a célban van és nincs halott
             gameManager.CompleteLevel();  
         }
+
+    }
+
+    private void SetPlayerStatusInList(string name, bool status){
+        isPlayerAtGoal[name] = status;
     }
 
     private void OnTriggerEnter2D(Collider2D collision){
         if(collision.tag == "Player"){
             string playerName = collision.name;
-            isPlayerAtGoal[playerName] = true;
+            SetPlayerStatusInList(playerName, true);
            
         }
     }
     private void OnTriggerExit2D(Collider2D collision){
         if(collision.tag == "Player"){
             string playerName = collision.name;
-            isPlayerAtGoal[playerName] = false;
+            SetPlayerStatusInList(playerName, false);
         }
     }
+
 }

@@ -878,7 +878,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -23.99649}
+  m_AnchoredPosition: {x: 0, y: -15}
   m_SizeDelta: {x: 301.4, y: 138.7355}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1990514854
@@ -914,7 +914,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "K\xE9sz\xEDtette:\nCsabai Abig\xE9l"
+  m_Text: "K\xE9sz\xEDtette:\nCsabai Abig\xE9l\nK\xF6sz\xF6net, minden tesztel\u0151nek,
+    \xE9s konzulensemnek, Bakonyi Vikt\xF3ri\xE1nak!"
 --- !u!222 &1990514855
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -957,7 +958,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 10.180328}
+  m_AnchoredPosition: {x: 0, y: 22.3}
   m_SizeDelta: {x: 301.4, y: 138.7355}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2042469691

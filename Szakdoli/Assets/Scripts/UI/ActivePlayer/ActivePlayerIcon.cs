@@ -13,7 +13,7 @@ public class ActivePlayerIcon : MonoBehaviour
         playerManager = FindObjectOfType<PlayerManager>();
     }
 
-    //Beállítja az aktív player jelenlegi státuszát az alapján hogy ez a player-e az aktív player.
+    //Beállítja a karakter jelenlegi státuszát az alapján hogy ez a player-e az aktív player.
     private void Update(){
        activeIcon.enabled = playerManager.getActivePlayerName() == playerName; 
     }

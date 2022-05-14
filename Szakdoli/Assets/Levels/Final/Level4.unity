@@ -11034,15 +11034,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 416194343813194108, guid: eb4e745c1e0213f4fb6127f2f34737b4, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 416194343813194108, guid: eb4e745c1e0213f4fb6127f2f34737b4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.1184769
+      value: 6.54
       objectReference: {fileID: 0}
     - target: {fileID: 416194343813194108, guid: eb4e745c1e0213f4fb6127f2f34737b4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 15.105771
+      value: 15.32
       objectReference: {fileID: 0}
     - target: {fileID: 416194343813194108, guid: eb4e745c1e0213f4fb6127f2f34737b4, type: 3}
       propertyPath: m_LocalPosition.z
@@ -24828,7 +24828,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7211816998249227709, guid: 44a94bffc7e75bd40855028c9df58a22, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7211816998368333548, guid: 44a94bffc7e75bd40855028c9df58a22, type: 3}
       propertyPath: playerHealth
@@ -24971,6 +24971,10 @@ PrefabInstance:
     - target: {fileID: 6782635872202293049, guid: 4400c2ed76974eb418b933a002621dd5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 60.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7217393907854860007, guid: 4400c2ed76974eb418b933a002621dd5, type: 3}
+      propertyPath: Loop
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8078094060041202185, guid: 4400c2ed76974eb418b933a002621dd5, type: 3}
       propertyPath: m_LocalPosition.x

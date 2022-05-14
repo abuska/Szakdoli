@@ -30,9 +30,10 @@ public class EnemyPatrol : MonoBehaviour
 
     //Paraméterként itt tudjuk megadni mely animátort használja az osztály.
     [Header ("Enemy Animator")]
-    [SerializeField] private Animator anim;
+    private Animator anim;
 
     private void Awake(){
+        anim = GetComponentInChildren<Animator>();
         initScale = enemy.localScale;
     }
 
@@ -77,10 +78,18 @@ public class EnemyPatrol : MonoBehaviour
         idleTimer = 0;
         anim.SetBool("isMove", true);
         //Enemy sprite képének a forgatása a megfelelő irányba
-        enemy.localScale = new Vector3(Mathf.Abs(initScale.x) * _direction, initScale.y, initScale.z);
+        enemy.localScale = new Vector3(
+            Mathf.Abs(initScale.x) * _direction, 
+            initScale.y, 
+            initScale.z
+        );
 
         //Enemy mozgatása a megfelelő irányba
-        enemy.position = new Vector3(enemy.position.x + Time.deltaTime *_direction * speed, enemy.position.y, enemy.position.z);
+        enemy.position = new Vector3(
+            enemy.position.x + Time.deltaTime *_direction * speed, 
+            enemy.position.y, 
+            enemy.position.z
+        );
 
     }
 }

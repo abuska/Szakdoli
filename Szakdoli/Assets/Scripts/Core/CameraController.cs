@@ -13,6 +13,7 @@ public class CameraController : MonoBehaviour{
     private PlayerManager playerManager;
     private float lookAhead;
 
+    //Kamera mozgásának a limitje, hogy ne látszódjon semmilyen körülmények között a pálya széle 
     private float cameraLimitUp;
     private float cameraLimitDown;
     private float cameraLimitLeft;
@@ -21,6 +22,11 @@ public class CameraController : MonoBehaviour{
     private void Awake(){
         playerManager = FindObjectOfType<PlayerManager>();
         
+        initCameraLimits();
+       
+    }
+
+    private void initCameraLimits(){
         cameraLimitUp = this.transform.GetChild(0).gameObject.GetComponent<Transform>().position.y;
         cameraLimitDown = this.transform.GetChild(1).gameObject.GetComponent<Transform>().position.y;
         cameraLimitLeft = this.transform.GetChild(2).gameObject.GetComponent<Transform>().position.x;
@@ -42,4 +48,6 @@ public class CameraController : MonoBehaviour{
     }
 
 }
+
+
 

@@ -54,21 +54,8 @@ public class PlayerMovement : MonoBehaviour{
             verticalInput = Input.GetAxis("Vertical");
 
             FlipPlayerImage();
-
-            if((!isOnWall() && isGrounded()) || 
-                (playerName=="Olaf" && anim.GetBool("isShieldUp") || 
-                (playerName=="Erik" && !isOnWall())) ){
-
-                Move();
-            }
+            Move();
             
-            //TODO kiszervezni a faltörést methbe
-            if(canRun() && Input.GetMouseButton(0) && runTimer > runTime){
-                //TODO itt van egy olyan hiba h touchpaddal nem működik
-                anim.SetBool("run", true);
-                runTimer = 0;
-            }
-
             if(Input.GetKey(KeyCode.Space) ){
                 jumpRememberTimer = jumpRememberTime;
                 if(playerName=="Olaf"){
@@ -80,9 +67,7 @@ public class PlayerMovement : MonoBehaviour{
                 Climb();
             }
             
-            if(!isGrounded() && !onLadder() && playerName=="Olaf" && anim.GetBool("isShieldUp") ){
-                body.velocity = new Vector2(body.velocity.x, OlafShieldUpFallingSpeed);  
-            }
+            HandleOlafFall();
             
             //Set animator
             anim.SetBool("walk", isWalk());
@@ -104,24 +89,26 @@ public class PlayerMovement : MonoBehaviour{
             anim.SetTrigger("jump");       
         }
     }
+    
     private void Move(){
-        if(isRun()){
-            body.velocity = new Vector2(horizontalInput * runSpeed, body.velocity.y);
-        }else{
-            body.velocity = new Vector2(horizontalInput * speed, body.velocity.y);
+        if(canRun() && Input.GetMouseButton(0) && runTimer > runTime){
+            anim.SetBool("run", true);
+            runTimer = 0;
         }
-        
-
-        
-        //https://www.youtube.com/watch?v=vFsJIrm2btU
-        //TODO
-
-        /*float velocity = body.velocity.x;
-        velocity += horizontalInput;
-        velocity *= Mathf.Pow(1f - horizontalInput, Time.deltaTime * 10f);
-        body.velocity = new Vector2(velocity, body.velocity.y);*/
-       
+        if((!isOnWall() 
+                && isGrounded()) || 
+                (playerName=="Olaf" && anim.GetBool("isShieldUp") || 
+                (playerName=="Erik" && !isOnWall())) 
+            ){
+                if(isRun()){
+                    body.velocity = new Vector2(horizontalInput * runSpeed, body.velocity.y);
+                }else{
+                    body.velocity = new Vector2(horizontalInput * speed, body.velocity.y);
+                }
+        }
     }
+
+
 
     public void SetShield(){
         if(shieldUpTimer > shieldUpTime){
@@ -131,23 +118,41 @@ public class PlayerMovement : MonoBehaviour{
     }
 
     private void Climb(){
-        if(onLadder() && Mathf.Abs(verticalInput) > 0 && !anim.GetBool("onLadder")){
+        if(isOnLadder() && Mathf.Abs(verticalInput) > 0 && !anim.GetBool("onLadder")){
+            //elkezd mászni
             anim.SetBool("onLadder", true);
-            RaycastHit2D ladder = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0, Vector2.down, 0.1f, ladderLayer);
-        
+            RaycastHit2D ladder = Physics2D.BoxCast(
+                boxCollider.bounds.center, 
+                boxCollider.bounds.size, 
+                0, 
+                Vector2.down, 
+                0.1f, 
+                ladderLayer
+            );
+
+            transform.position = new Vector3(
+                ladder.transform.gameObject.transform.position.x, 
+                transform.position.y, 
+                transform.position.z
+            );
+
             setGravityScale(0);
             body.velocity = new Vector2(body.velocity.x, 0);
-        }else if(onLadder() && Mathf.Abs(verticalInput) > 0 && anim.GetBool("onLadder")){
+        }else if(isOnLadder() && Mathf.Abs(verticalInput) > 0 && anim.GetBool("onLadder")){
+            //ha mászik
             anim.SetBool("isClimb", true);
-            body.velocity = new Vector2(body.velocity.x, verticalInput * speed);  
-        }else if(onLadder() && Mathf.Abs(verticalInput) <= 0 && anim.GetBool("isClimb")){
+            body.velocity = new Vector2(0, verticalInput * speed);  
+        }else if(isOnLadder() && Mathf.Abs(verticalInput) <= 0 && anim.GetBool("isClimb")){
+            //ha megáll mászás közben
             anim.SetBool("isClimb", false);
-            body.velocity = new Vector2(body.velocity.x, 0);
-        }else if((Mathf.Abs(horizontalInput) > 0 && !isGrounded()) || !onLadder()){
+            body.velocity = new Vector2(0, 0);
+        }else if((Mathf.Abs(horizontalInput) > 0 && !isGrounded()) || !isOnLadder()){
+            //ha leugrik a létráról
             setGravityScale(gravityScale);
             anim.SetBool("isClimb", false);
             anim.SetBool("onLadder", false);
-        }else if(isGrounded() && onLadder()){
+        }else if(isGrounded() && isOnLadder()){
+            //ha a létra mellett áll
             setGravityScale(0);
             body.velocity = new Vector2(body.velocity.x, 0);
             anim.SetBool("isClimb", false);
@@ -155,6 +160,13 @@ public class PlayerMovement : MonoBehaviour{
         }
     
     }
+
+    private void HandleOlafFall(){
+        if(!isGrounded() && !isOnLadder() && playerName=="Olaf" && anim.GetBool("isShieldUp") ){
+            body.velocity = new Vector2(body.velocity.x, OlafShieldUpFallingSpeed);  
+        }
+    }
+    
     private void FlipPlayerImage(){
         //Flip image according player move
         if(horizontalInput > 0.01f){
@@ -164,41 +176,80 @@ public class PlayerMovement : MonoBehaviour{
         }
     }
 
-    //Anim conditions
+   public void setGravityScale(float value){
+        body.gravityScale = value;
+    }
+
+    public void setRunFasle(){
+        if(playerName=="Erik"){
+            anim.SetBool("run", false);
+        }
+    }
+
+    public string getPlayerName(){
+        return playerName;
+    }
+    
     private bool isWalk(){
         return horizontalInput !=0 /*&& !isOnWall()*/;
     }
+    
     private bool canRun(){
         return anim.GetBool("walk") == true && playerName=="Erik";
     }
+    
     private bool isRun(){
         return playerName=="Erik" && anim.GetBool("run");
     }
+    
     private bool isGrounded(){
         groundRememberTimer += Time.deltaTime;
 
-        RaycastHit2D raycastHitGround = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0, Vector2.down, 0.1f, groundLayer);
-        RaycastHit2D raycastHitShield = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0, Vector2.down, 0.1f, shieldLayer);
+        RaycastHit2D raycastHitGround = Physics2D.BoxCast(
+            boxCollider.bounds.center, 
+            boxCollider.bounds.size, 
+            0, 
+            Vector2.down, 
+            0.1f, 
+            groundLayer
+        );
+
+        RaycastHit2D raycastHitShield = Physics2D.BoxCast(
+            boxCollider.bounds.center, 
+            boxCollider.bounds.size, 
+            0, Vector2.down, 
+            0.1f, 
+            shieldLayer
+        );
+
         bool hit = raycastHitGround.collider != null || raycastHitShield.collider != null;
 
         if(hit){
-            //TODO a nagy eséstől sérüljön a karakter;
-            /*if(groundRememberTimer>damageGroundTime){
-                GetComponent<Health>().TakeDamage(1);
-            }*/
             groundRememberTimer = 0;
         }
         return hit || groundRememberTimer < groundRememberTime;
     }
 
-    private bool onLadder(){
-        RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0, Vector2.down, 0.1f, ladderLayer);
+    private bool isOnLadder(){
+        RaycastHit2D raycastHit = Physics2D.BoxCast(
+            boxCollider.bounds.center, 
+            boxCollider.bounds.size, 0, 
+            Vector2.down, 
+            0.1f, 
+            ladderLayer
+        );
         return raycastHit.collider != null;
 
     }
 
     private bool isOnWall(){
-        RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0, new Vector2(transform.localScale.x, 0), 0.1f, wallLayer);
+        RaycastHit2D raycastHit = Physics2D.BoxCast(
+            boxCollider.bounds.center, 
+            boxCollider.bounds.size, 0, 
+            new Vector2(transform.localScale.x, 0), 
+            0.1f, 
+            wallLayer
+        );
         return raycastHit.collider != null;
     }
 
@@ -210,16 +261,4 @@ public class PlayerMovement : MonoBehaviour{
         return isGrounded();
     }
     
-    public void setGravityScale(float value){
-        body.gravityScale = value;
-    }
-    public void setRunFasle(){
-        if(playerName=="Erik"){
-            anim.SetBool("run", false);
-        }
-    }
-
-    public string getPlayerName(){
-        return playerName;
-    }
 }
