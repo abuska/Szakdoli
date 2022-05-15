@@ -79,6 +79,7 @@ public class PlayerManager : MonoBehaviour
     }
 
     private void DeactivatePlayer(int index){
+        players[activePlayerIndex].GetComponent<PlayerMovement>().setVelocity();
         players[index].GetComponent<PlayerMovement>().enabled = false;
         players[index].GetComponent<PlayerAttack>().enabled = false;
     }

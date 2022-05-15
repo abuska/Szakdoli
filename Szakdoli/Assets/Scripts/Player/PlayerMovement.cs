@@ -135,8 +135,11 @@ public class PlayerMovement : MonoBehaviour{
                 transform.position.y, 
                 transform.position.z
             );
-
+            if(playerName=="Olaf" && anim.GetBool("isShieldUp")){
+                SetShield();
+            }
             setGravityScale(0);
+            
             body.velocity = new Vector2(body.velocity.x, 0);
         }else if(isOnLadder() && Mathf.Abs(verticalInput) > 0 && anim.GetBool("onLadder")){
             //ha mászik
@@ -178,6 +181,9 @@ public class PlayerMovement : MonoBehaviour{
 
    public void setGravityScale(float value){
         body.gravityScale = value;
+    }
+    public void setVelocity(){
+        body.velocity = new Vector2(0, 0);
     }
 
     public void setRunFasle(){

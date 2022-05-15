@@ -898,13 +898,13 @@ TextureImporter:
       name: assets_14
       rect:
         serializedVersion: 2
-        x: 7339
-        y: 384
-        width: 5206
-        height: 678
+        x: 7409
+        y: 232
+        width: 5010
+        height: 670
       alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 116, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0

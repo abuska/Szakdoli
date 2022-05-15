@@ -73,16 +73,16 @@ public class Elevator : MonoBehaviour
     }
 
     //Mozgás
-    private void MoveInDirection(int _direction){
+    private void MoveInDirection(int direction){
         //Elevator mozgatása a megfelelő irányba
         elevator.position = new Vector3(
             elevator.position.x , 
-            elevator.position.y + Time.deltaTime *_direction * speed, 
+            elevator.position.y + Time.deltaTime *direction * speed, 
             elevator.position.z
         );
         elevatorGround.position = new Vector3(
             elevator.position.x , 
-            elevator.position.y + Time.deltaTime *_direction * speed, 
+            elevator.position.y + Time.deltaTime *direction * speed, 
             elevator.position.z
         );
     }

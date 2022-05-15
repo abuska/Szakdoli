@@ -74,19 +74,19 @@ public class EnemyPatrol : MonoBehaviour
     }
 
     //Mozgás
-    private void MoveInDirection(int _direction){
+    private void MoveInDirection(int direction){
         idleTimer = 0;
         anim.SetBool("isMove", true);
         //Enemy sprite képének a forgatása a megfelelő irányba
         enemy.localScale = new Vector3(
-            Mathf.Abs(initScale.x) * _direction, 
+            Mathf.Abs(initScale.x) * direction, 
             initScale.y, 
             initScale.z
         );
 
         //Enemy mozgatása a megfelelő irányba
         enemy.position = new Vector3(
-            enemy.position.x + Time.deltaTime *_direction * speed, 
+            enemy.position.x + Time.deltaTime *direction * speed, 
             enemy.position.y, 
             enemy.position.z
         );

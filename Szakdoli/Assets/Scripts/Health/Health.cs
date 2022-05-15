@@ -36,8 +36,8 @@ public class Health : MonoBehaviour{
     }
 
     //Sebzés
-    public void TakeDamage(float _demage){
-        currentHealth = Mathf.Clamp(currentHealth - _demage, 0, startingHealth);
+    public void TakeDamage(float demage){
+        currentHealth = Mathf.Clamp(currentHealth - demage, 0, startingHealth);
        
         if( currentHealth > 0 ){
 
@@ -113,13 +113,13 @@ public class Health : MonoBehaviour{
     }
 
     //Health növelése, pl felszedhető életerő pontokkal
-    public void AddHelath(float _value){
-        currentHealth = Mathf.Clamp(currentHealth + _value, 0, startingHealth);
+    public void AddHelath(float value){
+        currentHealth = Mathf.Clamp(currentHealth + value, 0, startingHealth);
     }
 
-    public void IncreaseHelath(float _value){
-        startingHealth =  Mathf.Clamp(startingHealth + _value, 0, 10);
-        currentHealth = Mathf.Clamp(currentHealth + _value, 0, 10);
+    public void IncreaseHelath(float value){
+        startingHealth =  Mathf.Clamp(startingHealth + value, 0, 10);
+        currentHealth = Mathf.Clamp(currentHealth + value, 0, 10);
     }
 
     //A sérülés után a sebezhetetlenségért felelős fv.
