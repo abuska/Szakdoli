@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour{
     [SerializeField] private LayerMask shieldLayer;
     [SerializeField] private LayerMask wallLayer;
     [SerializeField] private LayerMask ladderLayer;
+    [SerializeField] private LayerMask antigravity;
 
     private Rigidbody2D body;
     private Animator anim;
@@ -227,8 +228,14 @@ public class PlayerMovement : MonoBehaviour{
             0.1f, 
             shieldLayer
         );
-
-        bool hit = raycastHitGround.collider != null || raycastHitShield.collider != null;
+        RaycastHit2D raycastHitAntigravity = Physics2D.BoxCast(
+            boxCollider.bounds.center, 
+            boxCollider.bounds.size, 
+            0, Vector2.down, 
+            0.1f, 
+            antigravity
+        );
+        bool hit = raycastHitGround.collider != null || raycastHitShield.collider != null || raycastHitAntigravity.collider != null;
 
         if(hit){
             groundRememberTimer = 0;

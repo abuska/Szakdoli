@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 368993894149745165}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.091430016, y: -0.010942663, z: 0}
+  m_LocalPosition: {x: 0.091430016, y: 0.127, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 881578351823786829}
@@ -44,7 +44,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -2.4817705}
+  m_Offset: {x: -0.08833009, y: -1.2585149}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -55,7 +55,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 18.050001, y: 1.9169806}
+  m_Size: {x: 2.7451591, y: 1.7497702}
   m_EdgeRadius: 0
 --- !u!1 &881578351823786818
 GameObject:
@@ -82,12 +82,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 881578351823786818}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 19.44, z: 0}
-  m_LocalScale: {x: 0.2953125, y: 0.27418, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -2.080101, y: 19.052, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4127507763682077933}
-  m_Father: {fileID: 881578352762758960}
+  m_Father: {fileID: 496205802359345621}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &881578351823786831
@@ -127,15 +127,15 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 2091945961
-  m_SortingLayer: 4
+  m_SortingLayerID: -493599947
+  m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 4541617381640706555, guid: 6d1227e6e4ef26b4594cc489935ab52a, type: 3}
+  m_Sprite: {fileID: 631013516088295862, guid: 6d1227e6e4ef26b4594cc489935ab52a, type: 3}
   m_Color: {r: 0.5283019, g: 0.5283019, b: 0.5283019, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.42, y: 1.35}
+  m_Size: {x: 2.8, y: 1.06}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -154,18 +154,18 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.020963669, y: 0}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 18.050001, y: 6.8805213}
-    newSize: {x: 1.42, y: 1.35}
+    oldSize: {x: 2.8, y: 1.06}
+    newSize: {x: 2.8, y: 1.06}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 18.09193, y: 6.8805213}
+  m_Size: {x: 2.8, y: 1.06}
   m_EdgeRadius: 0
 --- !u!1 &881578351838956063
 GameObject:
@@ -225,7 +225,7 @@ Transform:
   m_LocalPosition: {x: 26.95, y: -0.14, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 881578351823786829}
+  - {fileID: 496205802359345621}
   - {fileID: 881578351838956062}
   - {fileID: 881578353181299380}
   m_Father: {fileID: 0}
@@ -281,4 +281,35 @@ Transform:
   m_Children: []
   m_Father: {fileID: 881578352762758960}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &927822241657965649
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 496205802359345621}
+  m_Layer: 0
+  m_Name: Elevator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &496205802359345621
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 927822241657965649}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 881578351823786829}
+  m_Father: {fileID: 881578352762758960}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

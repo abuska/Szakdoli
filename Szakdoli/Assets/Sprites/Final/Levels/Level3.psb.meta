@@ -135,28 +135,6 @@ ScriptedImporter:
     tessellationDetail: 0
     parentGroupIndex: -1
     uvTransform: {x: 4, y: 6500}
-  - name: 0
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 4
-      y: 4
-      width: 17388
-      height: 3240
-    spriteID: 754f6b94dab000249824ebfb5696dff0
-    internalID: 0
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    parentGroupIndex: -1
-    uvTransform: {x: 4, y: 4}
   - name: -1
     originalName: 
     pivot: {x: 0.5, y: 0.5}
@@ -223,6 +201,28 @@ ScriptedImporter:
     tessellationDetail: 0
     parentGroupIndex: -1
     uvTransform: {x: 4, y: 3252}
+  - name: 0
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 17388
+      height: 3240
+    spriteID: e5c9de8ddd1987c4cb7bf76453d1b558
+    internalID: 0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    parentGroupIndex: -1
+    uvTransform: {x: 4, y: 4}
   platformSettings:
   - name: DefaultTexturePlatform
     overridden: 0
@@ -293,8 +293,8 @@ ScriptedImporter:
     spriteName: 0
     isGroup: 0
     parentIndex: -1
-    spriteID: 754f6b94dab000249824ebfb5696dff0
-    layerID: 144
+    spriteID: e5c9de8ddd1987c4cb7bf76453d1b558
+    layerID: 325
     mosaicPosition: {x: 4, y: 4}
   - name: -1
     spriteName: -1

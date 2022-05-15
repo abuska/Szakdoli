@@ -111,7 +111,6 @@ MonoBehaviour:
   enemy: {fileID: 4954454706622643516}
   speed: 2
   idleDuration: 2
-  anim: {fileID: 4954454706622643507}
 --- !u!1001 &7085172482663430450
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -167,6 +166,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2779376948051674127, guid: acbaaf058bcafaa44accd42125a28db3, type: 3}
+      propertyPath: m_SortingOrder
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: acbaaf058bcafaa44accd42125a28db3, type: 3}
 --- !u!4 &7621947312391032997 stripped
@@ -177,10 +180,5 @@ Transform:
 --- !u!4 &4954454706622643516 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2779376948051674126, guid: acbaaf058bcafaa44accd42125a28db3, type: 3}
-  m_PrefabInstance: {fileID: 7085172482663430450}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &4954454706622643507 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 2779376948051674113, guid: acbaaf058bcafaa44accd42125a28db3, type: 3}
   m_PrefabInstance: {fileID: 7085172482663430450}
   m_PrefabAsset: {fileID: 0}
